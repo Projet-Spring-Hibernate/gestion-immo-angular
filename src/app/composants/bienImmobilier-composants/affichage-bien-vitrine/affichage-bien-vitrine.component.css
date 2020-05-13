@@ -1,0 +1,21 @@
+.imageClass {
+    height: 300px;
+}
+
+ul {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.titre {
+    padding: 5px;
+    width: 30%;
+    float: left;
+    font-weight: bold;
+}
+
+.info {
+    padding: 5px;
+    width: 60%;
+    text-transform: capitalize;
+}

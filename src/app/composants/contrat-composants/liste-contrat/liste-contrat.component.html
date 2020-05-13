@@ -1,0 +1,55 @@
+<app-navbar-conseiller></app-navbar-conseiller>
+
+<div class="panel panel-primary" *ngFor="let prop of listeContrat">
+
+    <div class="panel-body">
+        <div class="col-xs-10">
+            <div class="row vertical-align">
+
+                <div class="col-xs-8">
+                    <!--detail-->
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Prix :
+                        </div>
+                        <div class="col-xs-6">
+                            {{prop.prix}}
+                        </div>
+                        <div class="col-xs-6">
+                            Date :
+                        </div>
+                        <div class="col-xs-6">
+                            {{prop.date}}
+                        </div>
+                        <div class="col-xs-6">
+                            Référence du contrat :
+                        </div>
+                        <div class="col-xs-6">
+                            {{prop.numeroRef}}
+                        </div>
+                        <div class="col-xs-6">
+                            Identifiant du bien immobilier :
+                        </div>
+                        <div class="col-xs-6">
+                            {{prop.bienImmobilier.idBien}}
+                        </div>
+                        <div class="col-xs-6">
+                            Client :
+                        </div>
+                        <div class="col-xs-6">
+                            {{prop.client.nom}}
+                        </div>
+                        <div class="col-xs-6">
+                            Conseiller :
+                        </div>
+                        <div class="col-xs-6">
+                            {{prop.conseiller.nom}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--end body-->
+</div>

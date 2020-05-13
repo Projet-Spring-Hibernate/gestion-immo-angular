@@ -1,0 +1,58 @@
+<app-navbar-conseiller></app-navbar-conseiller>
+
+<form #proprietaireForm="ngForm" (ngSubmit)="saveOrUpdateProprietaire()">
+    <!--panneau - pannel-->
+    <div class="panel panel-primary">
+
+        <!--//////////////// HEAD PANEL ///////////////-->
+        <div class="panel-heading">
+            <h3 class="panel-title">Ajout d'un propriétaire</h3>
+
+        </div>
+        <!--end div head-->
+
+        <!--//////////////// BODY PANEL ///////////////-->
+        <div class="panel-body">
+
+            <!--+++++++++++ input pour le nom +++++++++++-->
+            <div class="form-group">
+                <label for="p-nom">Nom : </label>
+                <input type="text" id="p-nom" class="form-control" placeholder="saisir le nom" name="nom" [(ngModel)]="proprietaire.nom">
+
+            </div>
+            <!--end div nom-->
+
+            <!--+++++++++++ input pour le tél pro +++++++++++-->
+            <div class="form-group">
+                <label for="p-telPro">Téléphone professionnel : </label>
+                <input type="text" id="p-telPro" class="form-control" placeholder="saisir le numéro professionnel" name="telPro" [(ngModel)]="proprietaire.telephonePro">
+
+            </div>
+            <!--end div tél pro-->
+
+            <!--+++++++++++ input pour le tél perso +++++++++++-->
+            <div class="form-group">
+                <label for="p-telPerso">Téléphone personnel : </label>
+                <input type="text" id="p-telPerso" class="form-control" placeholder="saisir le numéro personnel" name="telPerso" [(ngModel)]="proprietaire.telephonePerso">
+
+            </div>
+            <!--end div tél perso-->
+
+
+
+
+
+        </div>
+        <!--end div body-->
+
+
+        <!--//////////////// footer PANEL ///////////////-->
+        <div class="panel-footer">
+            <button class="btn btn-primary">Save</button>
+        </div>
+        <!--end div footer-->
+
+    </div>
+    <!--end div panel-->
+</form>
+<br> {{proprietaireForm.value | json}}

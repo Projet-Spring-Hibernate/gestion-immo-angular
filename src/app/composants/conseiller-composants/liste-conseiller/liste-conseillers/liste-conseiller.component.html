@@ -1,0 +1,74 @@
+<app-navbar-conseiller></app-navbar-conseiller>
+<br/>
+<br/>
+<h2 style="text-align: center;">Liste des Conseillers</h2>
+
+<br/>
+<br/>
+<div class="panel panel-primary" *ngFor="let cons of conseiller2">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{cons.nom}}</h3>
+      </div>
+   
+    <div class="panel-body">
+        <div class="col-xs-10">
+            <div class="row vertical-align">
+                
+                <div class="col-xs-8">
+                    <!--detail-->
+                    <div class="row">
+                     
+                        <div class="col-xs-6">
+                            Téléphone personnel :
+                        </div>
+                        <div class="col-xs-6">
+                            {{cons.telephonePerso}}
+                        </div>
+                        <div class="col-xs-6">
+                            Téléphone professionel :
+                        </div>
+                        <div class="col-xs-6">
+                            {{cons.telephonePro}}
+                        </div>
+                        <div class="col-xs-6">
+                            adresse :
+                        </div>
+                        <div class="col-xs-6">
+                            {{cons.adresse.rue}}
+                            {{cons.adresse.localite}}
+                            {{cons.adresse.codePostal}}
+                        </div>
+                      
+                        <div class="col-xs-6">
+                            Contrat :
+                        </div>
+                        <div class="col-xs-6">
+                          <span  *ngFor ="let cont of cons.contrats" > {{cont.idContrat}}
+                        </span>
+                        </div>
+
+                        <div class="col-xs-6">
+                            Visite :
+                        </div>
+                        <div class="col-xs-6">
+                          <span *ngFor ="let visite of cons.visites">{{visite.idVisite}}
+                          </span>  
+                        </div>
+
+          
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--end body-->
+    <div class="panel-footer">
+        <!-- ++++ bouton pour éditer -->
+        <button class="btn btn-primary" (click)="affichage(cons.id)">
+          Afficher
+        </button>
+      </div>
+      <!-- end div footer -->
+</div>
+

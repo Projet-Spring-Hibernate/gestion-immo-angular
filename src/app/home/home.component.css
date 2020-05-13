@@ -1,0 +1,48 @@
+slide {
+    height: 600px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.img-main-carousel {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    /*margin: 0 auto;*/
+}
+
+.rounded-circle {
+    height: 170px;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+.carousel-caption {
+    right: 0%;
+    left: 0%;
+    bottom: 0px;
+    padding-bottom: 50px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.container-conseillers {
+    background-color: rgb(240, 240, 240);
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+
+/*footer {
+    width: 100%;
+    background-color: #9d9d9d;
+    color: #ececec;
+    padding: 10px;
+}*/

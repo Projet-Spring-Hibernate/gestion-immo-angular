@@ -1,0 +1,40 @@
+<app-navbar-conseiller></app-navbar-conseiller>
+<div class="panel panel-primary" *ngFor="let prop of listeClient">
+
+
+    <div class="panel-body">
+        <div class="col-xs-10">
+            <div class="row vertical-align">
+                <div class="col-xs-8">
+                    <!--detail-->
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Classe Standard :
+                        </div>
+                        <div class="col-xs-6">
+                            <span *ngFor="let classe of prop.listeClasseStandard">
+                        {{classe.codeClasse}} </span></div>
+                    </div>
+                    <div class="col-xs-6">
+                        Nom :
+                    </div>
+                    <div class="col-xs-6">
+                        {{prop.nom}}
+                    </div>
+                    <div class="col-xs-6">
+                        Téléphone personnel :
+                    </div>
+                    <div class="col-xs-6">
+                        {{prop.telephonePerso}}
+                    </div>
+                    <div class="col-xs-6">
+                        Téléphone professionel :
+                    </div>
+                    <div class="col-xs-6">
+                        {{prop.telephonePro}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end body-->
+    </div>

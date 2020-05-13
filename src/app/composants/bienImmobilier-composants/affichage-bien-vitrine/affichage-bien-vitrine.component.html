@@ -1,0 +1,120 @@
+<app-navbar-vitrine></app-navbar-vitrine>
+<br>
+<br>
+<div class="container">
+
+    <div *ngIf="type.typeBien=='achat'">
+
+        <div style="width: 100%; text-align: center;">
+            <img class="imageClass" [src]="bienImmoAchat.photo">
+        </div>
+        <br><br>
+
+
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="titre">Adresse</div>
+                <div class="info">{{bienImmoAchat.adresse.rue}} {{bienImmoAchat.adresse.codePostal}} {{bienImmoAchat.adresse.localite}}</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Type de bien</div>
+                <div class="info">{{bienImmoAchat.typeBien}}</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Utilisation</div>
+                <div class="info">{{bienImmoAchat.utilisation}}</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Superficie</div>
+                <div class="info" *ngIf="bienImmoAchat.typeBien=='maison'">{{bienImmoAchat.superficie}} chambre(s)</div>
+                <div class="info" *ngIf="bienImmoAchat.typeBien=='studio' || bienImmoAchat.typeBien=='bureau'">{{bienImmoAchat.superficie}} pièce(s)</div>
+                <div class="info" *ngIf="bienImmoAchat.typeBien=='terrain'">{{bienImmoAchat.superficie}} ares</div>
+                <div class="info" *ngIf="bienImmoAchat.typeBien=='entrepot'">{{bienImmoAchat.superficie}} m2</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Classe</div>
+                <div class="info">{{bienImmoAchat.classeStandard.codeClasse}}</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Etat</div>
+                <div class="info">{{bienImmoAchat.etat}}</div>
+            </li>
+
+            <li class="list-group-item">
+                <div class="titre">Prix d'achat</div>
+                <div class="info">{{bienImmoAchat.prix}}€</div>
+            </li>
+            <li class="list-group-item list-group-item-success" *ngIf="bienImmoAchat.statut=='disponible'" style="text-align: center;">Disponible à partir du {{bienImmoAchat.dateMiseADisposition}}</li>
+            <li class="list-group-item list-group-item-danger" *ngIf="bienImmoAchat.statut=='indisponible'" style="text-align: center;">Indisponible</li>
+        </ul>
+    </div>
+
+    <div *ngIf="type.typeBien=='location'">
+
+        <div style="width: 100%; text-align: center;">
+            <img class="imageClass" [src]="bienImmoLoc.photo">
+        </div>
+        <br><br>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="titre">Adresse</div>
+                <div class="info">{{bienImmoLoc.adresse.rue}} {{bienImmoLoc.adresse.codePostal}} {{bienImmoLoc.adresse.localite}}</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Type de bien</div>
+                <div class="info">{{bienImmoLoc.typeBien}}</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Utilisation</div>
+                <div class="info">{{bienImmoLoc.utilisation}}</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Superficie</div>
+                <div class="info" *ngIf="bienImmoLoc.typeBien=='maison' ">{{bienImmoLoc.superficie}} chambres</div>
+                <div class="info" *ngIf="bienImmoLoc.typeBien=='studio' || bienImmoLoc.typeBien=='bureau'">{{bienImmoLoc.superficie}} chambres</div>
+                <div class="info" *ngIf="bienImmoLoc.typeBien=='terrain'">{{bienImmoLoc.superficie}} ares</div>
+                <div class="info" *ngIf="bienImmoLoc.typeBien=='entrepot'">{{bienImmoLoc.superficie}} m2</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Classe</div>
+                <div class="info">{{bienImmoLoc.classeStandard.codeClasse}}</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Caution</div>
+                <div class="info">{{bienImmoLoc.caution}}€</div>
+            </li>
+
+            <li class="list-group-item">
+                <div class="titre">Loyer mensuel</div>
+                <div class="info">{{bienImmoLoc.loyer}}€</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Charges</div>
+                <div class="info">{{bienImmoLoc.charges}}€</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Type de bail</div>
+                <div class="info">{{bienImmoLoc.typeBail}}</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Garniture</div>
+                <div class="info">{{bienImmoLoc.garniture}}</div>
+            </li>
+            <li class="list-group-item list-group-item-success" *ngIf="bienImmoLoc.statut=='disponible'" style="text-align: center;">Disponible à partir du {{bienImmoAchat.dateMiseADisposition}}</li>
+            <li class="list-group-item list-group-item-danger" *ngIf="bienImmoLoc.statut=='indisponible'" style="text-align: center;">Indisponible</li>
+        </ul>
+    </div>
+
+    <!--
+    <form #filtreForm="ngForm" (ngSubmit)="onClick()">
+        <input type="submit" value="Chercher">
+
+    </form>
+
+-->
+</div>
+
+<!--======================================================================-->
+<!--=============================== FOOTER================================ -->
+<!--======================================================================-->
+<app-footer></app-footer>

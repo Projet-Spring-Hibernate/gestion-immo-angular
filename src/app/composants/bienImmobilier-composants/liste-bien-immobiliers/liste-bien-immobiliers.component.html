@@ -1,0 +1,91 @@
+<app-navbar-vitrine></app-navbar-vitrine>
+
+
+<div class="container">
+    <h1>Liste des propriétés</h1>
+
+
+    <div class="row">
+
+
+        <form #filtreForm="ngForm" (ngSubmit)="getAllBienImmobiliers()">
+            <table>
+
+
+                <tr>
+
+                    <td colspan="4">Locations : <input type="checkbox" name="location" [(ngModel)]="filtres.location"></td>
+                    <td colspan="4">Locaux commerciaux : <input type="checkbox" name="commerciale" [(ngModel)]="filtres.commercial"></td>
+                    <td colspan="4">Disponibles : <input type="checkbox" name="disponible" [(ngModel)]="filtres.disponible"></td>
+
+                </tr>
+
+                <tr>
+
+                    <td colspan="4">Ventes : <input type="checkbox" name="vente" [(ngModel)]="filtres.vente"></td>
+                    <td colspan="4">Habitations : <input type="checkbox" name="habitation" [(ngModel)]="filtres.habitation"></td>
+                    <td colspan="4">Indisponibles : <input type="checkbox" name="indisponible" [(ngModel)]="filtres.indisponible"></td>
+                </tr>
+                <br/>
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" value="Chercher"></td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+
+
+
+    <br/><br/>
+    <div class="panel panel-primary" *ngFor="let bien of listeBienImmobiliers">
+        <a href="affichageBienVitrine/{{bien.idBien}}">
+            <div class="panel-body">
+                <div class="col-xs-10">
+                    <div class="row vertical-align">
+                        <div class="divImg col-xs-4">
+                            <img class="imageClass" [src]="bien.photo">
+                        </div>
+                        <div class="col-xs-8">
+                            <div class="info">
+                                <!--detail-->
+                                <div class="row">
+                                    <div class="titre col-xs-4">
+                                        Type de bien
+                                    </div>
+                                    <div class="info col-xs-8">
+                                        {{bien.typeBien}}
+                                    </div>
+                                    <div class="titre col-xs-4">
+                                        Pour une utilisation
+                                    </div>
+                                    <div class="info col-xs-8"> {{bien.utilisation}}</div>
+                                    <div class="titre col-xs-4">
+                                        Superficie
+                                    </div>
+                                    <div class="info col-xs-8" *ngIf="bien.typeBien=='maison'"> {{bien.superficie}} chambre(s)</div>
+                                    <div class="info col-xs-8" *ngIf="bien.typeBien=='studio' || bien.typeBien=='bureau'">{{bien.superficie}} pièce(s)</div>
+                                    <div class="info col-xs-8" *ngIf="bien.typeBien=='terrain'">{{bien.superficie}} ares</div>
+                                    <div class="info col-xs-8" *ngIf="bien.typeBien=='entrepot'">{{bien.superficie}} m2</div>
+
+                                    <div class="titre col-xs-4">
+                                        Adresse
+                                    </div>
+                                    <div class="info col-xs-8"> {{bien.adresse.rue}} {{bien.adresse.codePostal}} {{bien.adresse.localite}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </a>
+        <!--end body-->
+    </div>
+
+</div>
+
+<!--======================================================================-->
+<!--=============================== FOOTER================================ -->
+<!--======================================================================-->
+<app-footer></app-footer>

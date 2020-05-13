@@ -1,0 +1,89 @@
+<app-navbar-conseiller></app-navbar-conseiller>
+
+<div class="container">
+
+    <form #bienLocForm="ngForm" (ngSubmit)="saveOrUpdateBienLoc()">
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">Ajout ou modification d'un bien à louer</h3>
+
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="p-statut">Statut :</label>
+                    <input type="text" class="form-control" id="p-statut" name="statut" [(ngModel)]="bienImmoLoc.statut">
+                </div>
+                <div class="form-group">
+                    <label for="p-dateSoumissionAgence">Date de soumission à l'agence :</label>
+                    <input type="text" class="form-control" id="p-dateSoumissionAgence" name="dateSoumissionAgence" [(ngModel)]="bienImmoLoc.dateSoumissionAgence">
+                </div>
+                <div class="form-group">
+                    <label for="p-revenuCadastral">Revenu cadastral :</label>
+                    <input type="text" class="form-control" id="p-revenuCadastral" name="revenuCadastral" [(ngModel)]="bienImmoLoc.revenuCadastral">
+                </div>
+                <div class="form-group">
+                    <label for="p-dateMiseADisposition">Date de mise à disposition :</label>
+                    <input type="text" class="form-control" id="p-dateMiseADisposition" name="dateMiseADisposition" [(ngModel)]="bienImmoLoc.dateMiseADisposition">
+                </div>
+                <div class="form-group">
+                    <label for="p-photo">Photo :</label>
+                    <input type="text" class="form-control" id="p-photo" placeholder="saisir l'url de la photo. ex : assets/images/image.png" name="photo" [(ngModel)]="bienImmoLoc.photo">
+                </div>
+                <div class="form-group">
+                    <label for="p-typeBien">Type de bien :</label>
+                    <input type="text" class="form-control" id="p-typeBien" name="typeBien" [(ngModel)]="bienImmoLoc.typeBien">
+                </div>
+                <div class="form-group">
+                    <label for="p-utilisation">Utilisation :</label>
+                    <input type="text" class="form-control" id="p-utilisation" name="utilisation" [(ngModel)]="bienImmoLoc.utilisation">
+                </div>
+                <div class="form-group">
+                    <label for="p-superficie">Superficie :</label>
+                    <input type="text" class="form-control" id="p-superficie" name="superficie" [(ngModel)]="bienImmoLoc.superficie">
+                </div>
+                <div class="form-group">
+                    <label for="p-proprietaire">Propriétaire :</label>
+                    <input type="text" class="form-control" id="p-proprietaire" name="dateMiseADisposition" [(ngModel)]="bienImmoLoc.proprietaire">
+                </div>
+                <div class="form-group">
+                    <label for="p-classeStandard">Classe standard :</label>
+                    <input type="text" class="form-control" id="p-classeStandard" name="classeStandard" [(ngModel)]="bienImmoLoc.classeStandard">
+                </div>
+                <div class="form-group">
+                    <label for="p-adresse">Adresse</label>
+                    <input type="text" class="form-control" id="p-adresse" name="adresse" [(ngModel)]="bienImmoLoc.adresse">
+                </div>
+                <div class="form-group">
+                    <label for="p-caution">Caution :</label>
+                    <input type="text" class="form-control" id="p-caution" name="caution" [(ngModel)]="bienImmoLoc.caution">
+                </div>
+                <div class="form-group">
+                    <label for="p-loyer">Loyer :</label>
+                    <input type="text" class="form-control" id="p-loyer" name="loyer" [(ngModel)]="bienImmoLoc.loyer">
+                </div>
+                <div class="form-group">
+                    <label for="p-charges">Charges :</label>
+                    <input type="text" class="form-control" id="p-charges" name="charges" [(ngModel)]="bienImmoLoc.charges">
+                </div>
+                <div class="form-group">
+                    <label for="p-typeBail">Type de bail :</label>
+                    <input type="text" class="form-control" id="p-typeBail" name="typeBail" [(ngModel)]="bienImmoLoc.typeBail">
+                </div>
+                <div class="form-group">
+                    <label for="p-garniture">Charges :</label>
+                    <input type="text" class="form-control" id="p-garniture" name="garniture" [(ngModel)]="bienImmoLoc.garniture">
+                </div>
+
+            </div>
+
+            <div class="panel-footer">
+                <button class="btn btn-primary">SAVE</button>
+            </div>
+        </div>
+    </form>
+
+    <br> {{bienLocForm.value | json}}
+
+
+</div>
