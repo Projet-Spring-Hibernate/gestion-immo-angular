@@ -1,0 +1,60 @@
+<app-navbar-conseiller></app-navbar-conseiller>
+
+<div class="container">
+
+    <form #bienLocForm="ngForm" (ngSubmit)="saveOrUpdateContrat()">
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">Ajout ou modification d'un contrat</h3>
+
+            </div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label for="p-prixDuContrat">Prix convenu dans le contrat :</label>
+                    <input type="text" class="form-control" id="p-prixDuContrat" name="prixDuContrat" [(ngModel)]="contrat.prix">
+                </div>
+                <div class="form-group">
+                    <label for="p-dateDuContrat">Date de la signature du contrat :</label>
+                    <input type="text" class="form-control" id="p-dateDuContrat" name="dateDuContrat" [(ngModel)]="contrat.date">
+                </div>
+                <div class="form-group">
+                    <label for="p-numeroRefDuContrat">Numéro de référence du contrat :</label>
+                    <input type="text" class="form-control" id="p-numeroRefDuContrat" name="numeroRefDuContrat" [(ngModel)]="contrat.numeroRef">
+                </div>
+
+                <div class="form-group">
+                    <label for="p-bienImmobilier">Bien immobilier :<span *ngIf="contrat.bienImmobilier != null">  (Bien immobilier actuel : {{contrat.bienImmobilier.idBien}})</span></label>
+                    <select class="form-control" id="p-bienImmobilier" name="bienImmobilier" [(ngModel)]="contrat.bienImmobilier">
+                        <option *ngFor="let bien of listeBienImmobilierBdd" [ngValue]="bien">{{bien.idBien}}</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label for="p-client">Client :<span *ngIf="contrat.client != null">  (Client actuel : {{contrat.client.nom}})</span></label>
+                    <select class="form-control" id="p-client" name="client" [(ngModel)]="contrat.client">
+                        <option *ngFor="let client of listeClientsBdd" [ngValue]="client">{{client.nom}}</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label for="p-conseiller">Conseiller :<span *ngIf="contrat.conseiller != null">  (Conseiller actuel : {{contrat.conseiller.nom}})</span></label>
+                    <select class="form-control" id="p-conseiller" name="conseiller" [(ngModel)]="contrat.conseiller">
+                        <option *ngFor="let conseiller of listeConseillersBdd" [ngValue]="conseiller">{{conseiller.nom}}</option>
+                      </select>
+                </div>
+
+
+            </div>
+
+            <div class="panel-footer">
+                <button class="btn btn-primary">SAVE</button> 
+            </div>
+        </div>
+    </form>
+    
+
+    <br>
+    <!--{{bienLocForm.value | json}}-->
+
+
+</div>

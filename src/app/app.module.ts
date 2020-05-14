@@ -43,6 +43,7 @@ import { ListeVisiteComponent } from './composants/visite-composants/liste-visit
 
 //======= Contrats ============//
 import { ListeContratComponent } from './composants/contrat-composants/liste-contrat/liste-contrat.component';
+import { SaveContratComponent } from './composants/contrat-composants/save-contrat/save-contrat.component';
 
 //======= Propriétaires ============//
 import { ListeProprietaireComponent } from './composants/proprietaire-composants/liste-proprietaire/liste-proprietaire.component';
@@ -85,6 +86,7 @@ ListeClientComponent,
 AffichageClientComponent,
 ListeVisiteComponent,
 ListeContratComponent,
+SaveContratComponent,
 ListeProprietaireComponent,
 AffichageProprietaireComponent,
 AjouterProprietaireComponent,
