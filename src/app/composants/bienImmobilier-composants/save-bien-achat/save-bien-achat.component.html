@@ -1,0 +1,108 @@
+<app-navbar-conseiller></app-navbar-conseiller>
+
+<div class="container">
+
+    <form #bienLocForm="ngForm" (ngSubmit)="saveOrUpdateBienAchat()">
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">Ajout ou modification d'un bien à acheter</h3>
+
+            </div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label for="p-statut">Statut </label>
+                    <select class="form-control" id="p-statut" name="statut" [(ngModel)]="bienImmoAchat.statut">
+                      <option value="disponible">Disponible</option>
+                      <option value="indisponible">Indisponible</option>
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <label for="p-dateSoumissionAgence">Date de soumission à l'agence :</label>
+                    <input type="text" class="form-control" id="p-dateSoumissionAgence" name="dateSoumissionAgence" [(ngModel)]="bienImmoAchat.dateSoumissionAgence">
+                </div>
+                <div class="form-group">
+                    <label for="p-revenuCadastral">Revenu cadastral :</label>
+                    <input type="text" class="form-control" id="p-revenuCadastral" name="revenuCadastral" [(ngModel)]="bienImmoAchat.revenuCadastral">
+                </div>
+                <div class="form-group">
+                    <label for="p-dateMiseADisposition">Date de mise à disposition :</label>
+                    <input type="text" class="form-control" id="p-dateMiseADisposition" name="dateMiseADisposition" [(ngModel)]="bienImmoAchat.dateMiseADisposition">
+                </div>
+                <div class="form-group">
+                    <label for="p-photo">Photo :</label>
+                    <input type="text" class="form-control" id="p-photo" placeholder="ex : assets/images/image.png" name="photo" [(ngModel)]="bienImmoAchat.photo">
+                </div>
+                <div class="form-group">
+                    <label for="p-typeBien">Type de bien :</label>
+                    <select class="form-control" id="p-typeBien" name="typeBien" [(ngModel)]="bienImmoAchat.typeBien">
+                        <option value="maison">Maison</option>
+                        <option value="studio">Studio</option>
+                        <option value="bureau">Bureau</option>
+                        <option value="entrepot">Entrepôt</option>
+                        <option value="entrepot">Terrain</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label for="p-utilisation">Utilisation :</label>
+                    <select class="form-control" id="p-utilisation" name="utilisation" [(ngModel)]="bienImmoAchat.utilisation">
+                        <option value="commercial">Commerciale</option>
+                        <option value="habitation">Habitation</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label for="p-superficie">Superficie :</label>
+                    <input type="text" class="form-control" id="p-superficie" name="superficie" [(ngModel)]="bienImmoAchat.superficie">
+                </div>
+                <div class="form-group">
+                    <label for="p-proprietaire">Propriétaire :<span *ngIf="bienImmoAchat.proprietaire != null">  (propriétaire actuel : {{bienImmoAchat.proprietaire.nom}})</span></label>
+                    <select class="form-control" id="p-proprietaire" name="proprietaire" [(ngModel)]="bienImmoAchat.proprietaire">
+                        <option *ngFor="let proprietaire of listeProprietairesBdd" [ngValue]="proprietaire">{{proprietaire.nom}}</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label for="p-classeStandard">Classe standard : <span *ngIf="bienImmoAchat.classeStandard != null">(classe actuelle : {{bienImmoAchat.classeStandard.codeClasse}})</span></label>
+                    <select class="form-control" id="p-classeStandard" name="classeStandard" [(ngModel)]="bienImmoAchat.classeStandard">
+                        <option *ngFor="let classe of listeClasseStandard" [ngValue]="classe">{{classe.codeClasse}}</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label for="p-adresseRue">Rue : </label>
+                    <input type="text" class="form-control" id="p-adresseRue" name="adresseRue" [(ngModel)]="bienImmoAchat.adresse.rue">
+                </div>
+                <div class="form-group">
+                    <label for="p-adressecode">Code postal : </label>
+                    <input type="text" class="form-control" id="p-adressecode" name="adressecode" [(ngModel)]="bienImmoAchat.adresse.codePostal">
+                </div>
+                <div class="form-group">
+                    <label for="p-adresseLocalite">Localité : </label>
+                    <input type="text" class="form-control" id="p-adresseLocalite" name="adresseLocalite" [(ngModel)]="bienImmoAchat.adresse.localite">
+                </div>
+                <div class="form-group">
+                    <label for="p-etat">Etat :</label>
+                    <select class="form-control" id="p-etat" name="etat" [(ngModel)]="bienImmoAchat.etat">
+                        <option value="impeccable">Impeccable</option>
+                        <option value="correct">Correct</option>
+                        <option value="à restorer">A restorer</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label for="p-prix">Prix :</label>
+                    <input type="text" class="form-control" id="p-prix" name="prix" [(ngModel)]="bienImmoAchat.prix">
+                </div>
+
+            </div>
+
+            <div class="panel-footer">
+                <button class="btn btn-primary">SAVE</button>
+            </div>
+        </div>
+    </form>
+
+    <br>
+    <!--{{bienLocForm.value | json}}-->
+
+
+</div>

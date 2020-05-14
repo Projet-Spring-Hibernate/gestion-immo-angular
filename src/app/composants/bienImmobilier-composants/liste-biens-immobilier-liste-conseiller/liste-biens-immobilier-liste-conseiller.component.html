@@ -2,34 +2,28 @@
 
 
 <div class="container">
-    <h1>Liste des propriétés <a href="compte/save-bienALouer/0" class="btn btn-info">Ajouter un bien à louer</a> <a href="compte/save-bienAchat/0" class="btn btn-info">Ajouter un bien à acheter</a></h1>
-
-
-
+    <h1>Liste des propriétés </h1>
+    <br>
     <div class="row">
-
-
+        <a href="compte/save-bienALouer/0" class="btn btn-primary">Ajouter un bien à louer</a> | <a href="compte/save-bienAchat/0" class="btn btn-primary">Ajouter un bien à acheter</a>
+    </div>
+    <br><br>
+    <div style="width: 400px; border-radius: 5px; border:1px solid lightgray;">
         <form #filtreForm="ngForm" (ngSubmit)="getAllBienImmobiliers()">
             <table>
-
-
                 <tr>
 
-                    <td colspan="4">Locations : <input type="checkbox" name="location" [(ngModel)]="filtres.location"></td>
-                    <td colspan="4">Locaux commerciaux : <input type="checkbox" name="commerciale" [(ngModel)]="filtres.commercial"></td>
-                    <td colspan="4">Disponibles : <input type="checkbox" name="disponible" [(ngModel)]="filtres.disponible"></td>
-
+                    <td><input type="checkbox" name="location" [(ngModel)]="filtres.location"> Locations</td>
+                    <td><input type="checkbox" name="commerciale" [(ngModel)]="filtres.commercial"> Locaux commerciaux </td>
+                    <td><input type="checkbox" name="disponible" [(ngModel)]="filtres.disponible"> Disponibles</td>
                 </tr>
-
                 <tr>
-
-                    <td colspan="4">Ventes : <input type="checkbox" name="vente" [(ngModel)]="filtres.vente"></td>
-                    <td colspan="4">Habitations : <input type="checkbox" name="habitation" [(ngModel)]="filtres.habitation"></td>
-                    <td colspan="4">Indisponibles : <input type="checkbox" name="indisponible" [(ngModel)]="filtres.indisponible"></td>
+                    <td><input type="checkbox" name="vente" [(ngModel)]="filtres.vente"> Ventes</td>
+                    <td><input type="checkbox" name="habitation" [(ngModel)]="filtres.habitation"> Habitations </td>
+                    <td><input type="checkbox" name="indisponible" [(ngModel)]="filtres.indisponible"> Indisponibles</td>
                 </tr>
-                <br/>
                 <tr>
-                    <td colspan="2" align="center"><input type="submit" value="Chercher"></td>
+                    <td colspan="3" style="text-align: center;"><input type="submit" class="btn btn-default" value="Chercher"></td>
                 </tr>
 
             </table>
@@ -82,6 +76,21 @@
             </div>
         </a>
         <!--end body-->
+        <div class="panel-footer">
+            <!--+++++++ bouton pour afficher +++++++-->
+            <button class="btn btn-primary" (click)="afficher(bien.idBien)">
+                Afficher
+            </button> |
+            <!--+++++++ bouton pour éditer +++++++-->
+            <button class="btn btn-warning" (click)="modifier(bien.idBien)">
+                Modifier
+            </button> |
+            <!--+++++++ bouton pour supprimer +++++++-->
+            <button class="btn btn-danger" (click)="supprimer(bien.idBien)">
+                Supprimer
+            </button>
+
+        </div>
     </div>
 
 </div>

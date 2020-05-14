@@ -9,8 +9,17 @@
             <img class="imageClass" [src]="bienImmoAchat.photo">
         </div>
         <br><br>
-
-
+        <div style="width: 100%; text-align: center;">
+            <!--+++++++ bouton pour éditer +++++++-->
+            <button class="btn btn-warning" (click)="modifier(bienImmoAchat.idBien)">
+            Modifier
+        </button> |
+            <!--+++++++ bouton pour supprimer +++++++-->
+            <button class="btn btn-danger" (click)="supprimer(bienImmoAchat.idBien)">
+            Supprimer
+        </button>
+        </div>
+        <br><br>
         <ul class="list-group">
 
             <li class="list-group-item">
@@ -65,12 +74,25 @@
                 <br/> Contrat :
             </li>
         </ul>
+
+
     </div>
 
     <div *ngIf="type.typeBien=='location'">
 
         <div style="width: 100%; text-align: center;">
             <img class="imageClass" [src]="bienImmoLoc.photo">
+        </div>
+        <br><br>
+        <div style="width: 100%; text-align: center;">
+            <!--+++++++ bouton pour éditer +++++++-->
+            <button class="btn btn-warning" (click)="modifier(bienImmoLoc.idBien)">
+            Modifier
+        </button> |
+            <!--+++++++ bouton pour supprimer +++++++-->
+            <button class="btn btn-danger" (click)="supprimer(bienImmoLoc.idBien)">
+            Supprimer
+        </button>
         </div>
         <br><br>
         <ul class="list-group">
@@ -138,7 +160,10 @@
                 Indisponible <br/> Contrat :
             </li>
         </ul>
+
     </div>
+
+
 
     <!--
     <form #filtreForm="ngForm" (ngSubmit)="onClick()">

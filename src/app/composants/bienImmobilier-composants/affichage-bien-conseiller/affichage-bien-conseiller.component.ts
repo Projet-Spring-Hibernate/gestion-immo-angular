@@ -114,8 +114,31 @@ export class AffichageBienConseillerComponent implements OnInit {
    }
 
  }
-
-
  }
+
+ async modifier(id:number){
+  const type = await this.getTypeBien(id).toPromise()
+
+  if (type.typeBien=="location") {
+    this.router.navigate(['compte/save-bienALouer/'+id]);
+  }else{
+    this.router.navigate(['compte/save-bienAchat/'+id]);
+  }
+  
+}
+
+async supprimer(id:number){
+  const type = await this.getTypeBien(id).toPromise()
+  console.log(type.typeBien)
+  const suppr = await this.delete(id).toPromise()
+  console.log(suppr)
+  this.router.navigate(['/compte/liste-biens']);
+  console.log("bien supprimer")
+}
+
+
+delete(id:number){
+  return this.bienImmobilierService.deleteBien(id)
+}
 
 }

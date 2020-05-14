@@ -127,4 +127,38 @@ export class ListeBiensImmobilierListeConseillerComponent implements OnInit {
   getAllBiensLoc(){
     return this.bienImmobilierService.getAllBienImmobiliersALouerFromWsRest();
   }
+
+  afficher(id:number){
+    this.router.navigate(['compte/affichage-bien/'+id]);
+  }
+
+  async modifier(id:number){
+    const type = await this.getTypeBien(id).toPromise()
+
+    if (type.typeBien=="location") {
+      this.router.navigate(['compte/save-bienALouer/'+id]);
+    }else{
+      this.router.navigate(['compte/save-bienAchat/'+id]);
+    }
+    
+  }
+
+  async supprimer(id:number){
+    const type = await this.getTypeBien(id).toPromise()
+    console.log(type.typeBien)
+    const suppr = await this.delete(id).toPromise()
+    console.log(suppr)
+    this.getAllBienImmobiliers()
+    this.router.navigate(['/compte/liste-biens']);
+    console.log("bien supprimer")
+  }
+
+  getTypeBien(id:number){
+    return this.bienImmobilierService.findTypeBienById(id)
+  }
+
+  delete(id:number){
+    return this.bienImmobilierService.deleteBien(id)
+  }
 }
+

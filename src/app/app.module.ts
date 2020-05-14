@@ -7,7 +7,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { Component } from '@angular/core';
 
 //import FormsModule : pour l'approche Template Driven Form
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,6 +52,7 @@ import { AjouterProprietaireComponent } from './composants/proprietaire-composan
 //======= Conseillers ============//
 import { ListeConseillerComponent } from './composants/conseiller-composants/liste-conseiller/liste-conseillers/liste-conseiller.component';
 import {AffichageConseillerComponent} from './composants/conseiller-composants/affichage-conseiller/affichage-conseiller/affichage-conseiller.component';
+import { SaveBienAchatComponent } from './composants/bienImmobilier-composants/save-bien-achat/save-bien-achat.component';
 
 
 
@@ -85,6 +86,7 @@ AffichageProprietaireComponent,
 AjouterProprietaireComponent,
 ListeConseillerComponent,
 AffichageConseillerComponent,
+SaveBienAchatComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,7 +94,8 @@ AffichageConseillerComponent,
     RouterModule,
     CarouselModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

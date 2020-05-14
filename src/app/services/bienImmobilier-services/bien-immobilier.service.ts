@@ -35,7 +35,7 @@ export class BienImmobilierService {
    private URL_WSREST_GETBYID_ACHAT = "http://localhost:8080/spring-rest/bienAAcheter/get-by-id"
    private URL_WSREST_SAVE_LOC = "http://localhost:8080/spring-rest/bienALouer/save"
    private URL_WSREST_SAVE_ACHAT = "http://localhost:8080/spring-rest/bienAAcheter/save"
-
+   private URL_WSREST_DELETE ="http://localhost:8080/spring-rest/bienImmobilier/delete"
 
    /**
     * Recup de tous les biens immobiliers de la bdd via le ws
@@ -105,4 +105,7 @@ findTypeBienById(idBien : number): Observable<TypeBien>{
   }//end 
 
 
+  deleteBien(id:number){
+    return this.httpClient.delete<void>(`${this.URL_WSREST_DELETE}/${id}`);
+  }
 }//End class

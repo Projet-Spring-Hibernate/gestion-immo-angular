@@ -10,9 +10,14 @@
 
             </div>
             <div class="panel-body">
+
                 <div class="form-group">
-                    <label for="p-statut">Statut :</label>
-                    <input type="text" class="form-control" id="p-statut" name="statut" [(ngModel)]="bienImmoLoc.statut">
+                    <label for="p-statut">Statut </label>
+                    <select class="form-control" id="p-statut" name="statut" [(ngModel)]="bienImmoLoc.statut">
+                      <option value="disponible">Disponible</option>
+                      <option value="indisponible">Indisponible</option>
+                    </select>
+
                 </div>
                 <div class="form-group">
                     <label for="p-dateSoumissionAgence">Date de soumission à l'agence :</label>
@@ -28,31 +33,52 @@
                 </div>
                 <div class="form-group">
                     <label for="p-photo">Photo :</label>
-                    <input type="text" class="form-control" id="p-photo" placeholder="saisir l'url de la photo. ex : assets/images/image.png" name="photo" [(ngModel)]="bienImmoLoc.photo">
+                    <input type="text" class="form-control" id="p-photo" placeholder="ex : assets/images/image.png" name="photo" [(ngModel)]="bienImmoLoc.photo">
                 </div>
                 <div class="form-group">
                     <label for="p-typeBien">Type de bien :</label>
-                    <input type="text" class="form-control" id="p-typeBien" name="typeBien" [(ngModel)]="bienImmoLoc.typeBien">
+                    <select class="form-control" id="p-typeBien" name="typeBien" [(ngModel)]="bienImmoLoc.typeBien">
+                        <option value="maison">Maison</option>
+                        <option value="studio">Studio</option>
+                        <option value="bureau">Bureau</option>
+                        <option value="entrepot">Entrepôt</option>
+                        <option value="entrepot">Terrain</option>
+                      </select>
                 </div>
                 <div class="form-group">
                     <label for="p-utilisation">Utilisation :</label>
-                    <input type="text" class="form-control" id="p-utilisation" name="utilisation" [(ngModel)]="bienImmoLoc.utilisation">
+                    <select class="form-control" id="p-utilisation" name="utilisation" [(ngModel)]="bienImmoLoc.utilisation">
+                        <option value="commercial">Commerciale</option>
+                        <option value="habitation">Habitation</option>
+                      </select>
                 </div>
                 <div class="form-group">
                     <label for="p-superficie">Superficie :</label>
                     <input type="text" class="form-control" id="p-superficie" name="superficie" [(ngModel)]="bienImmoLoc.superficie">
                 </div>
                 <div class="form-group">
-                    <label for="p-proprietaire">Propriétaire :</label>
-                    <input type="text" class="form-control" id="p-proprietaire" name="dateMiseADisposition" [(ngModel)]="bienImmoLoc.proprietaire">
+                    <label for="p-proprietaire">Propriétaire :<span *ngIf="bienImmoLoc.proprietaire != null">  (propriétaire actuel : {{bienImmoLoc.proprietaire.nom}})</span></label>
+                    <select class="form-control" id="p-proprietaire" name="proprietaire" [(ngModel)]="bienImmoLoc.proprietaire">
+                        <option *ngFor="let proprietaire of listeProprietairesBdd" [ngValue]="proprietaire">{{proprietaire.nom}}</option>
+                      </select>
                 </div>
                 <div class="form-group">
-                    <label for="p-classeStandard">Classe standard :</label>
-                    <input type="text" class="form-control" id="p-classeStandard" name="classeStandard" [(ngModel)]="bienImmoLoc.classeStandard">
+                    <label for="p-classeStandard">Classe standard : <span *ngIf="bienImmoLoc.classeStandard != null">(classe actuelle : {{bienImmoLoc.classeStandard.codeClasse}})</span></label>
+                    <select class="form-control" id="p-classeStandard" name="classeStandard" [(ngModel)]="bienImmoLoc.classeStandard">
+                        <option *ngFor="let classe of listeClasseStandard" [ngValue]="classe">{{classe.codeClasse}}</option>
+                      </select>
                 </div>
                 <div class="form-group">
-                    <label for="p-adresse">Adresse</label>
-                    <input type="text" class="form-control" id="p-adresse" name="adresse" [(ngModel)]="bienImmoLoc.adresse">
+                    <label for="p-adresseRue">Rue : </label>
+                    <input type="text" class="form-control" id="p-adresseRue" name="adresseRue" [(ngModel)]="bienImmoLoc.adresse.rue">
+                </div>
+                <div class="form-group">
+                    <label for="p-adressecode">Code postal : </label>
+                    <input type="text" class="form-control" id="p-adressecode" name="adressecode" [(ngModel)]="bienImmoLoc.adresse.codePostal">
+                </div>
+                <div class="form-group">
+                    <label for="p-adresseLocalite">Localité : </label>
+                    <input type="text" class="form-control" id="p-adresseLocalite" name="adresseLocalite" [(ngModel)]="bienImmoLoc.adresse.localite">
                 </div>
                 <div class="form-group">
                     <label for="p-caution">Caution :</label>
@@ -71,8 +97,11 @@
                     <input type="text" class="form-control" id="p-typeBail" name="typeBail" [(ngModel)]="bienImmoLoc.typeBail">
                 </div>
                 <div class="form-group">
-                    <label for="p-garniture">Charges :</label>
-                    <input type="text" class="form-control" id="p-garniture" name="garniture" [(ngModel)]="bienImmoLoc.garniture">
+                    <label for="p-garniture">Garniture :</label>
+                    <select class="form-control" id="p-garniture" name="garniture" [(ngModel)]="bienImmoLoc.garniture">
+                        <option value=" meublé">Meublé</option>
+                        <option value="non meublé">Non meublé</option>
+                      </select>
                 </div>
 
             </div>
@@ -83,7 +112,8 @@
         </div>
     </form>
 
-    <br> {{bienLocForm.value | json}}
+    <br>
+    <!--{{bienLocForm.value | json}}-->
 
 
 </div>

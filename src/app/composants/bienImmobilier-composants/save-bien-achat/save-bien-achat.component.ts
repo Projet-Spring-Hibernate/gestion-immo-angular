@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { BienALouer } from 'src/app/modeles/bienALouer-modele/bienALouer.modele';
+import { BienAAcheter } from 'src/app/modeles/bienAAcheter-modele/bienAAcheter.modele';
 import { BienImmobilierService } from 'src/app/services/bienImmobilier-services/bien-immobilier.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {ProprietaireService} from 'src/app/services/proprietaire-services/proprietaire.service'
 import {ClasseStandardService} from 'src/app/services/classeStandard-service/classe-standard.service'
 
 @Component({
-  selector: 'app-save-bien-alouer',
-  templateUrl: './save-bien-alouer.component.html',
-  styleUrls: ['./save-bien-alouer.component.css']
+  selector: 'app-save-bien-achat',
+  templateUrl: './save-bien-achat.component.html',
+  styleUrls: ['./save-bien-achat.component.css']
 })
-export class SaveBienALouerComponent implements OnInit {
+export class SaveBienAchatComponent implements OnInit {
 //============= PROPS ===========================//
-bienImmoLoc:BienALouer={idBien:null,
+bienImmoAchat:BienAAcheter={idBien:null,
   statut:null,
   dateSoumissionAgence:null,
   revenuCadastral:null,
@@ -28,21 +28,18 @@ bienImmoLoc:BienALouer={idBien:null,
          codePostal:null,
          localite:null 
   },
-  caution:null,
-  loyer:null,
-  charges:null,
-  typeBail:null,
-  garniture:null};
+  etat:null,
+  prix:null};
 
   listeProprietairesBdd=[]
   listeClasseStandard=[]
 
-//============= CTOR ===========================//
+  //============= CTOR ===========================//
   constructor(private router : Router, 
-              private activatedRoute : ActivatedRoute, 
-              private bienservice:BienImmobilierService , 
-              private proprietaireService:ProprietaireService,
-              private classeService:ClasseStandardService) { }
+    private activatedRoute : ActivatedRoute, 
+    private bienservice:BienImmobilierService , 
+    private proprietaireService:ProprietaireService,
+    private classeService:ClasseStandardService) { }
 
 
   //============= METHODE INIT ===========================//
@@ -51,9 +48,9 @@ bienImmoLoc:BienALouer={idBien:null,
       (parameterMap)=>{
         //recup du param id de l'url (ref : route edit/:id de app-routing.module.ts)
         const id = +parameterMap.get("id");
-        // appel de la méthode findEmployeById() 
+
         console.log(id);
-        this.findBienLocById(id);
+        this.findBienAchatById(id);
       }
     )
   }
@@ -61,46 +58,46 @@ bienImmoLoc:BienALouer={idBien:null,
  //============= METHODES ===========================// 
 
 
- async findBienLocById(id:number){
-   console.log("in findBienLocById")
+ async findBienAchatById(id:number){
+   console.log("in findBienAchatById")
 
   this.listeProprietairesBdd= await this.getListeroprietaires().toPromise()
   this.listeClasseStandard= await this.getListeClassesStandard().toPromise()
 
    if(id!=0){
-    this.bienservice.findBienALouerById(id).subscribe(
-      (data)=> {this.bienImmoLoc=data}
+    this.bienservice.findBienAAcheterById(id).subscribe(
+      (data)=> {this.bienImmoAchat=data}
     )
    }
  }
 
- async saveOrUpdateBienLoc(){
-   console.log(this.bienImmoLoc)
+ async saveOrUpdateBienAchat(){
+   console.log(this.bienImmoAchat)
   
-   if(this.bienImmoLoc.idBien != null){
-    const bien = await this.saveBienLoc(this.bienImmoLoc).toPromise()
+   if(this.bienImmoAchat.idBien != null){
+    const bien = await this.saveBienAchat(this.bienImmoAchat).toPromise()
    }else{
      // Stockage des valeurs proprietaire et classe dans des variables à part
-     const proprietaire = this.bienImmoLoc.proprietaire
-     const classe = this.bienImmoLoc.classeStandard
+     const proprietaire = this.bienImmoAchat.proprietaire
+     const classe = this.bienImmoAchat.classeStandard
 
      //On met à null les proprietés proprietaire et classe
-     this.bienImmoLoc.proprietaire=null
-     this.bienImmoLoc.classeStandard=null
+     this.bienImmoAchat.proprietaire=null
+     this.bienImmoAchat.classeStandard=null
 
      //On ajoute le bien à la bdd
-     let bien = await this.saveBienLoc(this.bienImmoLoc).toPromise()
+     let bien = await this.saveBienAchat(this.bienImmoAchat).toPromise()
 
      //On recupere le bien que l'on vient d'ajouter avec son id grâce à la liste
-     let listeBienLoc = await this.getAllBiensLoc().toPromise()
-     this.bienImmoLoc = listeBienLoc[listeBienLoc.length-1]
+     let listeBienAchat = await this.getAllBiensAchat().toPromise()
+     this.bienImmoAchat = listeBienAchat[listeBienAchat.length-1]
 
      //on réintegre les proprietés proprietaire et classe
-     this.bienImmoLoc.proprietaire=proprietaire
-     this.bienImmoLoc.classeStandard=classe
+     this.bienImmoAchat.proprietaire=proprietaire
+     this.bienImmoAchat.classeStandard=classe
 
      //On modifie le bien 
-     bien = await this.saveBienLoc(this.bienImmoLoc).toPromise()
+     bien = await this.saveBienAchat(this.bienImmoAchat).toPromise()
    }
    this.router.navigate(['compte/liste-biens']);
  }
@@ -113,11 +110,11 @@ bienImmoLoc:BienALouer={idBien:null,
    return this.classeService.getAllBienImmobiliersFromWsRest()
  }
 
- saveBienLoc(bien:BienALouer){
-   return this.bienservice.saveBienALouer(bien)
+ saveBienAchat(bien:BienAAcheter){
+   return this.bienservice.saveBienAAchat(bien)
  }
 
- getAllBiensLoc(){
-   return this.bienservice.getAllBienImmobiliersALouerFromWsRest()
+ getAllBiensAchat(){
+   return this.bienservice.getAllBienImmobiliersAAcheterFromWsRest()
  }
 }

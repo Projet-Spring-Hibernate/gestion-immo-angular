@@ -14,6 +14,7 @@ import { AffichageBienVitrineComponent } from './composants/bienImmobilier-compo
 import {AffichageBienConseillerComponent} from './composants/bienImmobilier-composants/affichage-bien-conseiller/affichage-bien-conseiller.component'
 import {ListeBiensImmobilierListeConseillerComponent} from './composants/bienImmobilier-composants/liste-biens-immobilier-liste-conseiller/liste-biens-immobilier-liste-conseiller.component'
 import {SaveBienALouerComponent} from './composants/bienImmobilier-composants/save-bien-alouer/save-bien-alouer.component'
+import {SaveBienAchatComponent} from './composants/bienImmobilier-composants/save-bien-achat/save-bien-achat.component'
 
 
 
@@ -50,6 +51,7 @@ const routes: Routes = [  {path:"", redirectTo:"home", pathMatch:'full'}, //rout
 {path:'compte/liste-biens', component: ListeBiensImmobilierListeConseillerComponent},
 {path:'compte/affichage-bien/:id', component: AffichageBienConseillerComponent},
 {path:'compte/save-bienALouer/:id', component: SaveBienALouerComponent},
+{path:'compte/save-bienAchat/:id', component: SaveBienAchatComponent},
 
 {path:'compte/liste-client', component: ListeClientComponent},
 {path:'compte/affichage-client/:id', component: AffichageClientComponent},
