@@ -1,6 +1,6 @@
 .navbar {
     border-radius: 0px;
-    height: 50px;
+    height: 60px;
     position: fixed;
     /* Set the navbar to fixed position */
     top: 0;
@@ -14,7 +14,7 @@
     font-size: large;
 }
 
-button {
-    font-size: larger;
+.btn {
+    font-size: medium;
     margin: 5px;
 }

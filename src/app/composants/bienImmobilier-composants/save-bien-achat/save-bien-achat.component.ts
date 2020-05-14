@@ -4,6 +4,9 @@ import { BienImmobilierService } from 'src/app/services/bienImmobilier-services/
 import { Router, ActivatedRoute } from '@angular/router';
 import {ProprietaireService} from 'src/app/services/proprietaire-services/proprietaire.service'
 import {ClasseStandardService} from 'src/app/services/classeStandard-service/classe-standard.service'
+import {AdresseServiceService} from 'src/app/services/adresse-service/adresse-service.service'
+import { Adresse } from 'src/app/modeles/adresse-modele/adresse.modele';
+
 
 @Component({
   selector: 'app-save-bien-achat',
@@ -39,7 +42,8 @@ bienImmoAchat:BienAAcheter={idBien:null,
     private activatedRoute : ActivatedRoute, 
     private bienservice:BienImmobilierService , 
     private proprietaireService:ProprietaireService,
-    private classeService:ClasseStandardService) { }
+    private classeService:ClasseStandardService,
+    private adresseService:AdresseServiceService) { }
 
 
   //============= METHODE INIT ===========================//
@@ -75,6 +79,8 @@ bienImmoAchat:BienAAcheter={idBien:null,
    console.log(this.bienImmoAchat)
   
    if(this.bienImmoAchat.idBien != null){
+    const resultAdresse = await this.saveAdresse(this.bienImmoAchat.adresse).toPromise()
+    //this.bienImmoAchat.adresse = await this.getAdresseById(this.bienImmoAchat.adresse.idAdresse).toPromise()
     const bien = await this.saveBienAchat(this.bienImmoAchat).toPromise()
    }else{
      // Stockage des valeurs proprietaire et classe dans des variables à part
@@ -116,5 +122,14 @@ bienImmoAchat:BienAAcheter={idBien:null,
 
  getAllBiensAchat(){
    return this.bienservice.getAllBienImmobiliersAAcheterFromWsRest()
+ }
+
+
+ getAdresseById(id:number){
+   return this.adresseService.getByIdAdresseFromWsRest(id)
+ }
+
+ saveAdresse(adresse:Adresse){
+   return this.adresseService.saveAdresseWithWebService(adresse)
  }
 }
