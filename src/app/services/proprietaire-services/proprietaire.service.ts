@@ -6,6 +6,7 @@ import {Observable, Subject} from 'rxjs'
 import { Proprietaire } from 'src/app/modeles/proprietaire-modele/proprietaire.modele';
 // import des opérateurs
 import {tap, filter, map} from 'rxjs/operators'
+import { BienImmobilier } from 'src/app/modeles/bienImmobilier-modele/bienImmobilier.modele';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class ProprietaireService {
   //prop : l'url du web service REST
   private URL_WSREST_GETALL = "http://localhost:8080/spring-rest/proprietaire/get-all"
   private URL_WSREST_BASE_URL = "http://localhost:8080/spring-rest/proprietaire"
+  private URL_WSREST_GETALLBIEN = "http://localhost:8080/spring-rest/bienImmobilier/get-by-idProprietaire"
 
 
   private _refreshNeeded = new Subject<void>();
@@ -27,6 +29,11 @@ export class ProprietaireService {
     return this._refreshNeeded;
   }
   /*================ METHODES ========================== */
+
+  getAllBiensByProprietaire(id : number): Observable<BienImmobilier[]>{
+    return this.httpClient.get<BienImmobilier[]>(`${this.URL_WSREST_GETALLBIEN}/${id}`);
+  }
+
   getAllProprietaire() : Observable<Proprietaire[]>{
     // envoi d'une requete en GET via la méthode get() qui retourne un type generique 'Observable<Object>'
     return this.httpClient.get<Proprietaire[]>(this.URL_WSREST_GETALL)
@@ -38,24 +45,23 @@ export class ProprietaireService {
    */
   ajouterProprietaire(proprietaire :Proprietaire) :Observable<Proprietaire> {
 
-    return this.httpClient.post<Proprietaire>(`${this.URL_WSREST_BASE_URL}/save`, proprietaire).pipe(
-
-      tap(
-        () => {this.refreshNeeded.next()}
-      )
-    )
+    return this.httpClient.post<Proprietaire>(`${this.URL_WSREST_BASE_URL}/save`, proprietaire)
   }//end ajouterProprietaire
 
   findProprietaireById(id :number):Observable<Proprietaire>  {
 
     // invocation du ws rest avec une req http get
-    return this.httpClient.get<Proprietaire>(`${this.URL_WSREST_BASE_URL}/${id}`).pipe(
+    return this.httpClient.get<Proprietaire>(`${this.URL_WSREST_BASE_URL}/get-by-id/${id}`).pipe(
       tap(
         // next() émet un événement pour les composants qui vont s'abnner à l'observable pour les informer de l'ajout d'un propriétaire
         () => {this.refreshNeeded.next()}
       )
     );
   }//end findProprietaireById
+
+  getById(id : number){
+    return this.httpClient.get<Proprietaire>(`${this.URL_WSREST_BASE_URL}/get-by-id/${id}`)
+  }
 
   /**
    * MODIF
@@ -81,12 +87,16 @@ export class ProprietaireService {
 
     // construction de l'url avec la template string de typescript
     return this.httpClient.delete<void>(`${this.URL_WSREST_BASE_URL}/delete/${proprietaire.id}`).pipe(
-      tap(
-        // next() émet un événement pour les composants qui vont s'abnner à l'observable pour les informer de l'ajout d'un employé
+     tap(
+        //next() émet un événement pour les composants qui vont s'abnner à l'observable pour les informer de l'ajout d'un employé
         () => {this.refreshNeeded.next()}
       )
     );
   }//end supprimerProprietaire(employe)
+
+  deleteProprietaire(id:number){
+    return this.httpClient.delete<void>(`${this.URL_WSREST_BASE_URL}/delete/${id}`);
+  }
 
 
 }

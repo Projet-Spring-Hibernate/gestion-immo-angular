@@ -1,12 +1,13 @@
 <app-navbar-conseiller></app-navbar-conseiller>
 
+<div class="container">
 <form #proprietaireForm="ngForm" (ngSubmit)="saveOrUpdateProprietaire()">
     <!--panneau - pannel-->
     <div class="panel panel-primary">
 
         <!--//////////////// HEAD PANEL ///////////////-->
         <div class="panel-heading">
-            <h3 class="panel-title">Ajout d'un propriétaire</h3>
+            <h3 class="panel-title">Ajout ou modification d'un propriétaire</h3>
 
         </div>
         <!--end div head-->
@@ -38,6 +39,23 @@
             </div>
             <!--end div tél perso-->
 
+            <!--+++++++++++ input pour l'adresse +++++++++++-->
+            <div class="form-group">
+                <label for="p-adresseRue">Rue : </label>
+                <input type="text" class="form-control" id="p-adresseRue" name="adresseRue" [(ngModel)]="proprietaire.adresse.rue">
+            </div>
+            <div class="form-group">
+                <label for="p-adressecode">Code postal : </label>
+                <input type="text" class="form-control" id="p-adressecode" name="adressecode" [(ngModel)]="proprietaire.adresse.codePostal">
+            </div>
+            <div class="form-group">
+                <label for="p-adresseLocalite">Localité : </label>
+                <input type="text" class="form-control" id="p-adresseLocalite" name="adresseLocalite" [(ngModel)]="proprietaire.adresse.localite">
+            </div>
+
+
+
+
 
 
 
@@ -55,4 +73,6 @@
     </div>
     <!--end div panel-->
 </form>
-<br> {{proprietaireForm.value | json}}
+</div>
+
+<app-footer></app-footer>
