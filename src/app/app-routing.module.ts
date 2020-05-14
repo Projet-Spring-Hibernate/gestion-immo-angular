@@ -40,6 +40,13 @@ import { ListeConseillerComponent } from './composants/conseiller-composants/lis
 import {AffichageConseillerComponent} from './composants/conseiller-composants/affichage-conseiller/affichage-conseiller/affichage-conseiller.component';
 
 
+//======= Login =================//
+import {LoginComponent} from 'src/app/login/login.component'
+import { LogoutComponent } from './logout/logout.component';
+
+//=========== AuthGaurd
+import { AuthGaurdService } from './services/authGaurd-service/auth-gaurd-service.service';
+
 const routes: Routes = [  {path:"", redirectTo:"home", pathMatch:'full'}, //route par defaut - redirection
 {path:'home', component: HomeComponent},
 {path:'infoLocationVente', component: InfoVenteLocationComponent},
@@ -49,28 +56,29 @@ const routes: Routes = [  {path:"", redirectTo:"home", pathMatch:'full'}, //rout
 {path:'listeBienImmobiliers', component: ListeBienImmobiliersComponent},
 {path:'affichageBienVitrine/:id', component: AffichageBienVitrineComponent},
 
-{path:'compte/liste-biens', component: ListeBiensImmobilierListeConseillerComponent},
-{path:'compte/affichage-bien/:id', component: AffichageBienConseillerComponent},
-{path:'compte/save-bienALouer/:id', component: SaveBienALouerComponent},
-{path:'compte/save-bienAchat/:id', component: SaveBienAchatComponent},
+{path:'compte/liste-biens', component: ListeBiensImmobilierListeConseillerComponent,canActivate:[AuthGaurdService]},
+{path:'compte/affichage-bien/:id', component: AffichageBienConseillerComponent,canActivate:[AuthGaurdService]},
+{path:'compte/save-bienALouer/:id', component: SaveBienALouerComponent,canActivate:[AuthGaurdService]},
+{path:'compte/save-bienAchat/:id', component: SaveBienAchatComponent,canActivate:[AuthGaurdService]},
 
-{path:'compte/liste-client', component: ListeClientComponent},
-{path:'compte/affichage-client/:id', component: AffichageClientComponent},
+{path:'compte/liste-client', component: ListeClientComponent,canActivate:[AuthGaurdService]},
+{path:'compte/affichage-client/:id', component: AffichageClientComponent,canActivate:[AuthGaurdService]},
 
-{path:'compte/liste-visites', component: ListeVisiteComponent},
-{path:'compte/save-visite/:id', component: SaveVisiteComponent},
+{path:'compte/liste-visites', component: ListeVisiteComponent,canActivate:[AuthGaurdService]},
+{path:'compte/save-visite/:id', component: SaveVisiteComponent,canActivate:[AuthGaurdService]},
 
-{path:'compte/liste-contrats', component: ListeContratComponent},
+{path:'compte/liste-contrats', component: ListeContratComponent,canActivate:[AuthGaurdService]},
 
-{path:'compte/liste-proprietaires', component: ListeProprietaireComponent},
-{path:'compte/affichage-proprietaire/:id', component: AffichageProprietaireComponent},
-{path:'compte/edit-proprietaires/:id', component: AjouterProprietaireComponent},
-
-
-{path:'compte/liste-conseillers', component: ListeConseillerComponent},
-{path:'compte/affichageconseiller/:id', component: AffichageConseillerComponent},
+{path:'compte/liste-proprietaires', component: ListeProprietaireComponent,canActivate:[AuthGaurdService]},
+{path:'compte/affichage-proprietaire/:id', component: AffichageProprietaireComponent,canActivate:[AuthGaurdService]},
+{path:'compte/edit-proprietaires/:id', component: AjouterProprietaireComponent,canActivate:[AuthGaurdService]},
 
 
+{path:'compte/liste-conseillers', component: ListeConseillerComponent,canActivate:[AuthGaurdService]},
+{path:'compte/affichageconseiller/:id', component: AffichageConseillerComponent,canActivate:[AuthGaurdService]},
+
+{path:'login', component: LoginComponent},
+{path:'logout', component: LogoutComponent,canActivate:[AuthGaurdService]},
 
 {path:"*", component:HomeComponent} //route attrape-tout => si l'url ne correspond à aucune routes definies au dessus, on redirige vers home
 

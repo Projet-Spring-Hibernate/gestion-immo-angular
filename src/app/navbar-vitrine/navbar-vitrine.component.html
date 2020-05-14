@@ -23,7 +23,8 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><button type="submit" class="btn btn-default">Se Connecter</button></li>
+                <li><a *ngIf="!loginService.isUserLoggedIn()" href="login" class="btn btn-default">Se Connecter</a></li>
+                <li><a *ngIf="loginService.isUserLoggedIn()" href="logout" class="btn btn-default">Se déconnecter</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

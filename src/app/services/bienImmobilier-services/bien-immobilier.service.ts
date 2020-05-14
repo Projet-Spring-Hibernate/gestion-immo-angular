@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 //import du modele de données bienImmobilier.ts
 import { BienImmobilier } from '../../modeles/bienImmobilier-modele/bienImmobilier.modele'
@@ -41,7 +41,7 @@ export class BienImmobilierService {
     * Recup de tous les biens immobiliers de la bdd via le ws
     */
   getAllBienImmobiliersFromWsRest() : Observable<BienImmobilier[]>{
-    //1. envoi d'une requete en GET via la méthode get() qui retourne un type generique 'Observable<Object>'
+ //1. envoi d'une requete en GET via la méthode get() qui retourne un type generique 'Observable<Object>'
     return this.httpClient.get<BienImmobilier[]>(this.URL_WSREST_GETALL)
   }//end 
 

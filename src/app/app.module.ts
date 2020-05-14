@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
@@ -54,6 +54,9 @@ import { ListeConseillerComponent } from './composants/conseiller-composants/lis
 import {AffichageConseillerComponent} from './composants/conseiller-composants/affichage-conseiller/affichage-conseiller/affichage-conseiller.component';
 import { SaveBienAchatComponent } from './composants/bienImmobilier-composants/save-bien-achat/save-bien-achat.component';
 import { SaveVisiteComponent } from './composants/visite-composants/save-visite/save-visite.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { BasicAuthHtppInterceptorService } from './services/basicAuthHtppInterceptor-service/basic-auth-htpp-interceptor-service.service';
 
 
 
@@ -89,6 +92,8 @@ ListeConseillerComponent,
 AffichageConseillerComponent,
 SaveBienAchatComponent,
 SaveVisiteComponent,
+LoginComponent,
+LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +104,9 @@ SaveVisiteComponent,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{  
+    provide:HTTP_INTERCEPTORS, useClass:BasicAuthHtppInterceptorService, multi:true 
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
