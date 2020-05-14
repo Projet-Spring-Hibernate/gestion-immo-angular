@@ -59,6 +59,7 @@ import { SaveVisiteComponent } from './composants/visite-composants/save-visite/
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { BasicAuthHtppInterceptorService } from './services/basicAuthHtppInterceptor-service/basic-auth-htpp-interceptor-service.service';
+import { SaveConseillerComponent } from './composants/conseiller-composants/save-conseiller/save-conseiller/save-conseiller.component';
 
 
 
@@ -94,6 +95,7 @@ AffichageProprietaireComponent,
 AjouterProprietaireComponent,
 ListeConseillerComponent,
 AffichageConseillerComponent,
+SaveConseillerComponent,
 SaveBienAchatComponent,
 SaveVisiteComponent,
 LoginComponent,

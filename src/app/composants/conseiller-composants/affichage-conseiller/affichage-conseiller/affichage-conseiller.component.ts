@@ -15,7 +15,18 @@ export class AffichageConseillerComponent implements OnInit {
 
     //============= PROPS ===========================//
   id : number;
-  conseiller: Conseiller;
+  conseiller: Conseiller = {
+    motDePasse:null,
+    email:null,
+    id:null,
+    nom:null,
+    telephonePerso:null,
+    telephonePro:null,
+   adresse:null,
+    contrats:[],
+    visites :[]
+  }
+  
  
   
 

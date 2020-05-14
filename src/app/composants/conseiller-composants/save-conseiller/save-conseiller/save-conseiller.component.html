@@ -1,0 +1,65 @@
+ <app-navbar-conseiller></app-navbar-conseiller>
+
+<div class="container">
+
+    <form #ConseillerForm="ngForm" (ngSubmit)="saveOrUpdateConseiller()">
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">Ajout ou modification d'un conseiller</h3>
+
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="p-nom">Nom :</label>
+                    <input type="text" class="form-control" id="p-nom" name="nom" [(ngModel)]="conseiller.nom">
+                </div>
+
+                <div class="form-group">
+                    <label for="p-email">Email :</label>
+                    <input type="text" class="form-control" id="p-email" name="email" [(ngModel)]="conseiller.email">
+                </div>
+                <div class="form-group" *ngIf="conseiller.id==null">
+                    <label for="p-password">Mot de passe :</label>
+                    <input type="text" class="form-control" id="p-password" name="motDePasse" [(ngModel)]="conseiller.motDePasse">
+                </div>
+              
+                <div class="form-group">
+                    <label for="p-telperso">Telephone Perso :</label>
+                    <input type="text" class="form-control" id="p-telperso" name="telephonePerso" [(ngModel)]="conseiller.telephonePerso">
+                </div>
+            
+                <div class="form-group">
+                    <label for="p-telpro">Telephone Professionel :</label>
+                    <input type="text" class="form-control" id="p-telpro" name="telephonePro" [(ngModel)]="conseiller.telephonePro">
+                </div>
+             
+
+                <div class="form-group">
+                    <label for="p-adresseRue">Rue : </label>
+                    <input type="text" class="form-control" id="p-adresseRue" name="adresseRue" [(ngModel)]="conseiller.adresse.rue">
+                </div>
+                <div class="form-group">
+                    <label for="p-adressecode">Code postal : </label>
+                    <input type="text" class="form-control" id="p-adressecode" name="adressecode" [(ngModel)]="conseiller.adresse.codePostal">
+                </div>
+                <div class="form-group">
+                    <label for="p-adresseLocalite">Localité : </label>
+                    <input type="text" class="form-control" id="p-adresseLocalite" name="adresseLocalite" [(ngModel)]="conseiller.adresse.localite">
+                </div>
+           
+
+            </div>
+
+            <div class="panel-footer">
+                <button class="btn btn-primary">SAVE</button>
+            </div>
+        </div>
+    </form>
+
+    <br>
+
+
+
+
+</div>

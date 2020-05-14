@@ -38,6 +38,7 @@ import { AjouterProprietaireComponent } from './composants/proprietaire-composan
 //======= Conseillers ============//
 import { ListeConseillerComponent } from './composants/conseiller-composants/liste-conseiller/liste-conseillers/liste-conseiller.component';
 import {AffichageConseillerComponent} from './composants/conseiller-composants/affichage-conseiller/affichage-conseiller/affichage-conseiller.component';
+import {SaveConseillerComponent} from './composants/conseiller-composants/save-conseiller/save-conseiller/save-conseiller.component';
 
 
 //======= Login =================//
@@ -80,6 +81,8 @@ const routes: Routes = [  {path:"", redirectTo:"home", pathMatch:'full'}, //rout
 
 {path:'compte/liste-conseillers', component: ListeConseillerComponent,canActivate:[AuthGaurdService]},
 {path:'compte/affichageconseiller/:id', component: AffichageConseillerComponent,canActivate:[AuthGaurdService]},
+{path:'compte/save-conseillers/:id', component: SaveConseillerComponent,canActivate:[AuthGaurdService]},
+
 
 {path:'login', component: LoginComponent},
 {path:'logout', component: LogoutComponent,canActivate:[AuthGaurdService]},

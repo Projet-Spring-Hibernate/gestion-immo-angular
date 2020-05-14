@@ -2,7 +2,8 @@
 <br/>
 <br/>
 <h2 style="text-align: center;">Liste des Conseillers</h2>
-
+<br/>
+<a href="compte/save-conseillers/0" class="btn btn-primary">    Ajouter </a>
 <br/>
 <br/>
 <div class="panel panel-primary" *ngFor="let cons of conseiller2">
@@ -68,7 +69,17 @@
         <button class="btn btn-primary" (click)="affichage(cons.id)">
           Afficher
         </button>
+        |
+        <button class="btn btn-warning" (click)="modifier(cons.id)">
+            Modifier
+          </button>
+         |
+          <button class="btn btn-danger" (click)="supprimer(cons.id)">
+            Supprimer
+          </button>
       </div>
       <!-- end div footer -->
+  
 </div>
+
 
