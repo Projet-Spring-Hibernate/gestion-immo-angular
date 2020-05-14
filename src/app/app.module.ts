@@ -35,7 +35,8 @@ import {SaveBienALouerComponent} from './composants/bienImmobilier-composants/sa
 
 //======== Clients ===========//
 import { ListeClientComponent } from './composants/client-composants/liste-client/liste-client.component';
-import { AffichageClientComponent } from './composants/client-composants/affichage-client/affichage-client.component';
+import { SaveClientComponent } from './composants/client-composants/save-client/save-client.component';
+import {AffichageClientComponent} from './composants/client-composants/affichage-client/affichage-client.component'
 
 
 //======= Visites ============//
@@ -84,6 +85,7 @@ ListeBiensImmobilierListeConseillerComponent,
 SaveBienALouerComponent,
 ListeClientComponent,
 AffichageClientComponent,
+SaveClientComponent,
 ListeVisiteComponent,
 ListeContratComponent,
 SaveContratComponent,

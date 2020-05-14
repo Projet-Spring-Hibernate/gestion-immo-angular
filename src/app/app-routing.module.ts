@@ -47,6 +47,7 @@ import { LogoutComponent } from './logout/logout.component';
 //=========== AuthGaurd
 import { AuthGaurdService } from './services/authGaurd-service/auth-gaurd-service.service';
 import { SaveContratComponent } from './composants/contrat-composants/save-contrat/save-contrat.component';
+import { SaveClientComponent } from './composants/client-composants/save-client/save-client.component';
 
 const routes: Routes = [  {path:"", redirectTo:"home", pathMatch:'full'}, //route par defaut - redirection
 {path:'home', component: HomeComponent},
@@ -64,6 +65,7 @@ const routes: Routes = [  {path:"", redirectTo:"home", pathMatch:'full'}, //rout
 
 {path:'compte/liste-client', component: ListeClientComponent,canActivate:[AuthGaurdService]},
 {path:'compte/affichage-client/:id', component: AffichageClientComponent,canActivate:[AuthGaurdService]},
+{path:'compte/save-client/:id', component : SaveClientComponent,canActivate:[AuthGaurdService]},
 
 {path:'compte/liste-visites', component: ListeVisiteComponent,canActivate:[AuthGaurdService]},
 {path:'compte/save-visite/:id', component: SaveVisiteComponent,canActivate:[AuthGaurdService]},

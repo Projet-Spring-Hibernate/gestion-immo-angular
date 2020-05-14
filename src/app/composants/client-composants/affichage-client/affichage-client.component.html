@@ -1,2 +1,43 @@
 <app-navbar-conseiller></app-navbar-conseiller>
-<p>affichage-client works!</p>
+<br>
+<br>
+<div class="container">
+        <br><br>
+        <div style="width: 100%; text-align: center;">
+           
+            <button class="btn btn-warning" (click)="modifier(clt.id)">
+            Modifier
+        </button>
+           
+            <button class="btn btn-danger" (click)="supprimer(clt.id)">
+            Supprimer
+        </button>
+        </div>
+        <br><br>
+        <ul class="list-group">
+
+            <li class="list-group-item">
+                <div class="titre">Adresse</div>
+                <div class="info">{{clt.adresse.rue}} {{clt.adresse.codePostal}} {{clt.adresse.localite}}</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Nom</div>
+                <div class="info">{{clt.nom}}</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Telephone Personnel</div>
+                <div class="info">{{clt.telephonePerso}}</div>
+            </li>
+            <li class="list-group-item">
+                <div class="titre">Telephone Professionnel</div>
+                <div class="info">{{clt.telephonePro}}</div>
+            </li>
+            
+        </ul>
+
+    </div>
+
+<!--======================================================================-->
+<!--=============================== FOOTER================================ -->
+<!--======================================================================-->
+<app-footer></app-footer>

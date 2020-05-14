@@ -1,0 +1,51 @@
+<app-navbar-conseiller></app-navbar-conseiller>
+
+<div class="container">
+
+    <form #bienLocForm="ngForm" (ngSubmit)="saveOrUpdateClient()">
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">Ajout ou modification d'un client</h3>
+
+            </div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label for="p-dateDeVisite">Nom du client :</label>
+                    <input type="text" class="form-control" id="p-nom" name="nom" [(ngModel)]="client.nom">
+                </div>
+                <div class="form-group">
+                    <label for="p-heureDeVisite">Telephone Personnel du client :</label>
+                    <input type="text" class="form-control" id="p-telephonePerso" name="telephonePerso" [(ngModel)]="client.telephonePerso">
+                </div>
+                <div class="form-group">
+                    <label for="p-heureDeVisite">Telephone Professionnel du client :</label>
+                    <input type="text" class="form-control" id="p-telephonePro" name="telephonePro" [(ngModel)]="client.telephonePro">
+                </div>
+
+                <div class="form-group">
+                    <label for="p-rue">Rue :</label>
+                    <input type="text" class="form-control" id="p-rue" name="rue" [(ngModel)]="client.adresse.rue">
+                </div>
+                <div class="form-group">
+                    <label for="p-code">Code postal :</label>
+                    <input type="text" class="form-control" id="p-code" name="code" [(ngModel)]="client.adresse.codePostal">
+                </div>
+                <div class="form-group">
+                    <label for="p-localite">Localité :</label>
+                    <input type="text" class="form-control" id="p-localite" name="localite" [(ngModel)]="client.adresse.localite">
+                </div>
+
+            </div>
+
+            <div class="panel-footer">
+                <button class="btn btn-primary">SAVE</button>
+            </div>
+        </div>
+    </form>
+
+    <br>
+
+
+</div>
