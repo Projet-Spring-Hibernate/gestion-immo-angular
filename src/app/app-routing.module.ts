@@ -25,6 +25,7 @@ import { AffichageClientComponent } from './composants/client-composants/afficha
 
 //======= Visites ============//
 import { ListeVisiteComponent } from './composants/visite-composants/liste-visite/liste-visite.component';
+import {SaveVisiteComponent} from './composants/visite-composants/save-visite/save-visite.component'
 
 //======= Contrats ============//
 import { ListeContratComponent } from './composants/contrat-composants/liste-contrat/liste-contrat.component';
@@ -57,6 +58,7 @@ const routes: Routes = [  {path:"", redirectTo:"home", pathMatch:'full'}, //rout
 {path:'compte/affichage-client/:id', component: AffichageClientComponent},
 
 {path:'compte/liste-visites', component: ListeVisiteComponent},
+{path:'compte/save-visite/:id', component: SaveVisiteComponent},
 
 {path:'compte/liste-contrats', component: ListeContratComponent},
 

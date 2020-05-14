@@ -1,0 +1,55 @@
+<app-navbar-conseiller></app-navbar-conseiller>
+
+<div class="container">
+
+    <form #bienLocForm="ngForm" (ngSubmit)="saveOrUpdateVisite()">
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">Ajout ou modification d'une visite</h3>
+
+            </div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label for="p-dateDeVisite">Date de visite :</label>
+                    <input type="text" class="form-control" id="p-dateDeVisite" name="dateDeVisite" [(ngModel)]="visite.dateDeVisite">
+                </div>
+                <div class="form-group">
+                    <label for="p-heureDeVisite">Heure de visite :</label>
+                    <input type="text" class="form-control" id="p-heureDeVisite" name="heureDeVisite" [(ngModel)]="visite.heureDeVisite">
+                </div>
+
+                <div class="form-group">
+                    <label for="p-bienImmobilier">Bien immobilier :<span *ngIf="visite.bienImmobilier != null">  (Bien immobilier actuel : {{visite.bienImmobilier.idBien}})</span></label>
+                    <select class="form-control" id="p-bienImmobilier" name="bienImmobilier" [(ngModel)]="visite.bienImmobilier">
+                        <option *ngFor="let bien of listeBienImmobilierBdd" [ngValue]="bien">{{bien.idBien}}</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label for="p-client">Client :<span *ngIf="visite.client != null">  (Client actuel : {{visite.client.nom}})</span></label>
+                    <select class="form-control" id="p-client" name="client" [(ngModel)]="visite.client">
+                        <option *ngFor="let client of listeClientsBdd" [ngValue]="client">{{client.nom}}</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label for="p-conseiller">Conseiller :<span *ngIf="visite.conseiller != null">  (Conseiller actuel : {{visite.conseiller.nom}})</span></label>
+                    <select class="form-control" id="p-conseiller" name="conseiller" [(ngModel)]="visite.conseiller">
+                        <option *ngFor="let conseiller of listeConseillersBdd" [ngValue]="conseiller">{{conseiller.nom}}</option>
+                      </select>
+                </div>
+
+
+            </div>
+
+            <div class="panel-footer">
+                <button class="btn btn-primary">SAVE</button>
+            </div>
+        </div>
+    </form>
+
+    <br>
+    <!--{{bienLocForm.value | json}}-->
+
+
+</div>

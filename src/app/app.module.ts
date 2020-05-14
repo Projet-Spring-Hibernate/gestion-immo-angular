@@ -53,6 +53,7 @@ import { AjouterProprietaireComponent } from './composants/proprietaire-composan
 import { ListeConseillerComponent } from './composants/conseiller-composants/liste-conseiller/liste-conseillers/liste-conseiller.component';
 import {AffichageConseillerComponent} from './composants/conseiller-composants/affichage-conseiller/affichage-conseiller/affichage-conseiller.component';
 import { SaveBienAchatComponent } from './composants/bienImmobilier-composants/save-bien-achat/save-bien-achat.component';
+import { SaveVisiteComponent } from './composants/visite-composants/save-visite/save-visite.component';
 
 
 
@@ -87,6 +88,7 @@ AjouterProprietaireComponent,
 ListeConseillerComponent,
 AffichageConseillerComponent,
 SaveBienAchatComponent,
+SaveVisiteComponent,
   ],
   imports: [
     BrowserModule,

@@ -51,7 +51,6 @@ bienImmoLoc:BienALouer={idBien:null,
       (parameterMap)=>{
         //recup du param id de l'url (ref : route edit/:id de app-routing.module.ts)
         const id = +parameterMap.get("id");
-        // appel de la méthode findEmployeById() 
         console.log(id);
         this.findBienLocById(id);
       }
