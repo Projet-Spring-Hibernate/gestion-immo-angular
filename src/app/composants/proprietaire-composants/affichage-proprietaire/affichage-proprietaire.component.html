@@ -5,21 +5,20 @@
 
     <div class="container">
 
-    
-        
-
         <div style="width: 100%; text-align: center;">
+            <h1>Fiche du propriétaire {{proprietaire.nom}}</h1>
+            <br>
             <!--+++++++ bouton pour éditer +++++++-->
             <button class="btn btn-warning" (click)="editProprietaire(proprietaire.id)">
                Modifier
            </button> |
-           <!--+++++++ bouton pour supprimer +++++++-->
-           <button class="btn btn-danger" (click)="supprimer(proprietaire.id)">
+            <!--+++++++ bouton pour supprimer +++++++-->
+            <button class="btn btn-danger" (click)="supprimer(proprietaire.id)">
                Supprimer
            </button>
-       </div>
+        </div>
 
-       <br><br>
+        <br><br>
 
 
         <ul class="list-group">
@@ -32,12 +31,12 @@
                 <div class="titre">Téléphone personnel</div>
                 <div class="info">{{proprietaire.telephonePerso}}</div>
             </li>
-            
+
             <li class="list-group-item">
                 <div class="titre">Téléphone professionnel</div>
                 <div class="info">{{proprietaire.telephonePro}}</div>
             </li>
-            
+
             <li class="list-group-item">
                 <div class="titre">Adresse</div>
                 <div class="info">{{proprietaire.adresse.rue}} {{proprietaire.adresse.codePostal}} {{proprietaire.adresse.localite}}</div>
@@ -46,19 +45,20 @@
             <li class="list-group-item">
                 <div class="titre">Biens immobiliers</div>
                 <br><br>
-                <div class="infoImg" *ngFor ="let bien of proprietaire.listeBienImmobiliers" > {{bien.idBien}} <img class="imageClass" [src]="bien.photo">
+
+                <div class="infoImg" *ngFor="let bien of proprietaire.listeBienImmobiliers">
+                    Bien n°{{bien.idBien}} : {{bien.typeBien}}
+                    <img class="imageClass" [src]="bien.photo">
                 </div>
             </li>
 
-            
 
-            
+
+
         </ul>
 
-        
-       
+
+
     </div>
 
     <app-footer></app-footer>
-
-    

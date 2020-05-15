@@ -12,7 +12,14 @@ import { Client} from 'src/app/modeles/client-modele/client.modele';
 export class AffichageClientComponent implements OnInit {
 
   //============= PROPS ===========================//
-  clt:Client 
+  clt:Client={id:null,
+    nom:null,
+    telephonePerso:null,
+    telephonePro:null,
+    adresse:null,
+    listeContrats:null,
+    listeVisites:null,
+    listeClasseStandard:null}
 
   id:number
 
@@ -36,14 +43,14 @@ export class AffichageClientComponent implements OnInit {
       this.id = +parameterMap.get("id");
     })
   console.log(this.id)
-    this.getClientById(this.id)
+    this.findClient(this.id)
 }
 
-getClientById(id:number){
+async findClient(id:number){
   console.log("in getClientById")
-  this.clientService.getByIdClientFromWsRest(id).subscribe(
-    (data)=> {this.clt=data}
-  )
+  this.clt=await this.getClientById(id).toPromise()
+  this.clt.listeVisites= await this.getVisitesByIdCLient(id).toPromise()
+  this.clt.listeContrats= await this.getContratsByIdClient(id).toPromise()
   
 }
 
@@ -63,8 +70,17 @@ delete(id:number){
 }
 
 
+getClientById(id:number){
+  return this.clientService.getByIdClientFromWsRest(id)
+}
 
+getVisitesByIdCLient(id:number){
+  return this.clientService.getListeVisitesByIdContratFromWs(id)
+}
 
+getContratsByIdClient(id:number){
+  return this.clientService.getListeContratsByIdContratFromWs(id)
+}
 
 
 

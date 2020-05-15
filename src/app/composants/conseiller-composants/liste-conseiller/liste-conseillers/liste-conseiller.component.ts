@@ -11,36 +11,33 @@ import { async } from '@angular/core/testing';
   styleUrls: ['./liste-conseiller.component.css']
 })
 export class ListeConseillerComponent implements OnInit {
-  conseiller=[];
-  conseiller2=[];
+  listeconseiller=[];
+  listeconseiller2=[];
   constructor(private router : Router, private conseillerService : ConseillerService) { }
 
   ngOnInit(): void {
-    
-    
-
 
     this.getAllConseiller();
   }
 
 async getAllConseiller(){
 
-  this.conseiller = await this.getlisteConseiller().toPromise();
-  const contart =  await this.getAllContratByConseiller(1).toPromise();
+  this.listeconseiller = await this.getlisteConseiller().toPromise();
+  //const contart =  await this.getAllContratByConseiller(1).toPromise();
 
 
   var self = this;
-  this.conseiller.forEach(async function(c){
+  this.listeconseiller.forEach(async function(c){
     try{
     c.contrats= await self.getAllContratByConseiller(c.id).toPromise();
     c.visites = await self.getAllVisiteByConseiler(c.id).toPromise();
     console.log(c.contrats);
-    self.conseiller2.push(c);
+    self.listeconseiller2.push(c);
   }catch(e) {
     console.log(e);
 }
   })
-  console.log(this.conseiller2);
+  console.log(this.listeconseiller2);
 }
 
 getAllContratByConseiller(id :number){

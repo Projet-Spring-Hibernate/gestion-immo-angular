@@ -32,7 +32,9 @@ bienImmoAchat:BienAAcheter={idBien:null,
          localite:null 
   },
   etat:null,
-  prix:null};
+  prix:null,
+  contrat:null,
+  listeVisites:null};
 
   listeProprietairesBdd=[]
   listeClasseStandard=[]

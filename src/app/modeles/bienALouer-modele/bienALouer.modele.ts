@@ -1,6 +1,8 @@
 import { Proprietaire } from '../proprietaire-modele/proprietaire.modele';
 import { ClasseStandard } from '../classeStandard-modele/classeStandard.modele';
 import { Adresse } from '../adresse-modele/adresse.modele';
+import { Visite } from '../visite-modele/visite.modele';
+import { Contrat } from '../contrat-modele/contrat.modele';
 export class BienALouer{
     idBien:number;
     statut:string;
@@ -19,4 +21,6 @@ export class BienALouer{
     charges:number;
     typeBail:string;
     garniture:string;
+    contrat:Contrat;
+    listeVisites:Visite[]
 }

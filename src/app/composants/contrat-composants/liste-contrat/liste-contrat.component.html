@@ -1,55 +1,83 @@
 <app-navbar-conseiller></app-navbar-conseiller>
+<br>
+<div class="container">
+    <div style="width: 100%; text-align: center;">
+        <h1>Liste des contrats </h1>
+        <br>
+        <a href="compte/save-contrat/0" class="btn btn-primary">Ajouter un contrat</a>
+    </div>
 
-<div class="panel panel-primary" *ngFor="let prop of listeContrat">
 
-    <div class="panel-body">
-        <div class="col-xs-10">
-            <div class="row vertical-align">
+    <br><br>
+    <div class="panel panel-primary" *ngFor="let prop of listeContrat">
+        <!--////////////////// HEADER DU PANNEAU ////////////////////-->
+        <div class="panel-heading">
+            <h3 class="panel-title">Contrat n°{{prop.idContrat}}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-xs-10">
+                <div class="row vertical-align">
 
-                <div class="col-xs-8">
-                    <!--detail-->
-                    <div class="row">
-                        <div class="col-xs-6">
-                            Prix :
-                        </div>
-                        <div class="col-xs-6">
-                            {{prop.prix}}
-                        </div>
-                        <div class="col-xs-6">
-                            Date :
-                        </div>
-                        <div class="col-xs-6">
-                            {{prop.date}}
-                        </div>
-                        <div class="col-xs-6">
-                            Référence du contrat :
-                        </div>
-                        <div class="col-xs-6">
-                            {{prop.numeroRef}}
-                        </div>
-                        <div class="col-xs-6">
-                            Identifiant du bien immobilier :
-                        </div>
-                        <div class="col-xs-6">
-                            {{prop.bienImmobilier.idBien}}
-                        </div>
-                        <div class="col-xs-6">
-                            Client :
-                        </div>
-                        <div class="col-xs-6">
-                            {{prop.client.nom}}
-                        </div>
-                        <div class="col-xs-6">
-                            Conseiller :
-                        </div>
-                        <div class="col-xs-6">
-                            {{prop.conseiller.nom}}
+                    <div class="col-xs-8">
+                        <!--detail-->
+                        <div class="row">
+                            <div class="titre col-xs-6">
+                                Prix :
+                            </div>
+                            <div class="col-xs-6">
+                                {{prop.prix}}
+                            </div>
+                            <div class="titre col-xs-6">
+                                Date :
+                            </div>
+                            <div class="col-xs-6">
+                                {{prop.date}}
+                            </div>
+                            <div class="titre col-xs-6">
+                                Référence du contrat :
+                            </div>
+                            <div class="col-xs-6">
+                                {{prop.numeroRef}}
+                            </div>
+                            <div class="titre col-xs-6">
+                                Identifiant du bien immobilier :
+                            </div>
+                            <div class="col-xs-6">
+                                {{prop.bienImmobilier.idBien}}
+                            </div>
+                            <div class="titre col-xs-6">
+                                Client :
+                            </div>
+                            <div class="col-xs-6">
+                                {{prop.client.nom}}
+                            </div>
+                            <div class="titre col-xs-6">
+                                Conseiller :
+                            </div>
+                            <div class="col-xs-6">
+                                {{prop.conseiller.nom}}
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
+        </div>
+        <!--end body-->
+        <!--////////////////// FOOTER DU PANNEAU ////////////////////-->
+        <div class="panel-footer">
+
+            <a href="compte/affichage-contrat/{{prop.idContrat}}" role="button" class="btn btn-primary">Afficher</a> |
+            <!--+++++++ bouton pour éditer +++++++-->
+            <button class="btn btn-warning" (click)="modifier(prop.idContrat)">
+                    Modifier
+                </button> |
+            <!--+++++++ bouton pour supprimer +++++++-->
+            <button class="btn btn-danger" (click)="supprimer(prop.idContrat)">
+                    Supprimer
+                </button>
 
         </div>
+        <!--end div footer-->
     </div>
-    <!--end body-->
 </div>

@@ -1,49 +1,84 @@
 <app-navbar-conseiller></app-navbar-conseiller>
+<br>
+<div class="container">
+    <div style="width: 100%; text-align: center;">
+        <h1>Liste des visites </h1>
+        <br>
+        <a href="compte/save-visite/0" class="btn btn-primary">Ajouter une visite</a>
+    </div>
 
-<div class="panel panel-primary" *ngFor="let prop of listeVisite">
 
-    <div class="panel-body">
-        <div class="col-xs-10">
-            <div class="row vertical-align">
+    <br><br>
+    <div class="panel panel-primary" *ngFor="let prop of listeVisite">
+        <!--////////////////// HEADER DU PANNEAU ////////////////////-->
+        <div class="panel-heading">
+            <h3 class="panel-title">Visite n°{{prop.idVisite}}</h3>
+        </div>
+        <!--end div header-->
+        <div class="panel-body">
+            <div class="col-xs-10">
+                <div class="row vertical-align">
 
-                <div class="col-xs-8">
-                    <!--detail-->
-                    <div class="row">
-                        <div class="col-xs-6">
-                            Date de la visite :
-                        </div>
-                        <div class="col-xs-6">
-                            {{prop.dateDeVisite}}
-                        </div>
-                        <div class="col-xs-6">
-                            Heure de la visite :
-                        </div>
-                        <div class="col-xs-6">
-                            {{prop.heureDeVisite}}
-                        </div>
-                        <div class="col-xs-6">
-                            Identifiant du bien immobilier :
-                        </div>
-                        <div class="col-xs-6">
-                            {{prop.bienImmobilier.idBien}}
-                        </div>
-                        <div class="col-xs-6">
-                            Client :
-                        </div>
-                        <div class="col-xs-6">
-                            {{prop.client.nom}}
-                        </div>
-                        <div class="col-xs-6">
-                            Conseiller :
-                        </div>
-                        <div class="col-xs-6">
-                            {{prop.conseiller.nom}}
+                    <div class="col-xs-8">
+                        <!--detail-->
+                        <div class="row">
+                            <div class="titre col-xs-6">
+                                Date de la visite :
+                            </div>
+                            <div class="col-xs-6">
+                                {{prop.dateDeVisite}}
+                            </div>
+                            <div class="titre col-xs-6">
+                                Heure de la visite :
+                            </div>
+                            <div class="col-xs-6">
+                                {{prop.heureDeVisite}}
+                            </div>
+                            <div class="titre col-xs-6">
+                                Identifiant du bien immobilier :
+                            </div>
+                            <div class="col-xs-6">
+                                {{prop.bienImmobilier.idBien}}
+                            </div>
+                            <div class="titre col-xs-6">
+                                Client :
+                            </div>
+                            <div class="col-xs-6">
+                                {{prop.client.nom}}
+                            </div>
+                            <div class="titre col-xs-6">
+                                Conseiller :
+                            </div>
+                            <div class="col-xs-6">
+                                {{prop.conseiller.nom}}
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
+        <!--end body-->
+        <!--////////////////// FOOTER DU PANNEAU ////////////////////-->
+        <div class="panel-footer">
+
+            <a href="compte/affichage-visite/{{prop.idVisite}}" role="button" class="btn btn-primary">Afficher</a> |
+            <!--+++++++ bouton pour éditer +++++++-->
+            <button class="btn btn-warning" (click)="modifier(prop.idVisite)">
+            Modifier
+        </button> |
+            <!--+++++++ bouton pour supprimer +++++++-->
+            <button class="btn btn-danger" (click)="supprimer(prop.idVisite)">
+            Supprimer
+        </button>
+
+        </div>
+        <!--end div footer-->
     </div>
-    <!--end body-->
+
 </div>
+<!--======================================================================-->
+<!--=============================== FOOTER================================ -->
+<!--======================================================================-->
+<app-footer></app-footer>

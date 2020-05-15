@@ -1,75 +1,84 @@
 <app-navbar-conseiller></app-navbar-conseiller>
+<br>
 <div class="container">
-<h1>Liste des propriétaires  <a href="compte/edit-proprietaires/0" class="btn btn-primary">Ajouter un propriétaire</a></h1>
-<div class="panel panel-primary" *ngFor="let prop of listeProprietaire2">
-    
-    <!--////////////////// HEADER DU PANNEAU ////////////////////-->
-    <div class="panel-heading">
-        <h3 class="panel-title">{{prop.nom}}</h3>
+    <div style="width: 100%; text-align: center;">
+        <h1>Liste des propriétaires </h1>
+        <br>
+        <a href="compte/edit-proprietaires/0" class="btn btn-primary">Ajouter un propriétaire</a>
     </div>
-    <!--end div header-->
 
-    <div class="panel-body">
-        <div class="col-xs-10">
-            <div class="row vertical-align">
 
-                <div class="col-xs-8">
-                    <!--detail-->
-                    <div class="row">
+    <br><br>
 
-                        <div class=" titre col-xs-6">
-                            Téléphone personnel :
-                        </div>
-                        <div class="col-xs-6">
-                            {{prop.telephonePerso}}
-                        </div>
-                        <div class="titre col-xs-6">
-                            Téléphone professionel :
-                        </div>
-                        <div class="col-xs-6">
-                            {{prop.telephonePro}}
-                        </div>
-                        <div class="titre col-xs-6">
-                            Adresse :
-                        </div>
-                        <div class="col-xs-6">
-                            {{prop.adresse.rue}} {{prop.adresse.codePostal}} {{prop.adresse.localite}}
-                        </div>
-                        <!-- Biens Immobilier-->
-                        <div class="titre col-xs-6">
-                            Biens immobiliers :
-                        </div>
-                        <div class="col-xs-6">
-                          <span  *ngFor ="let bien of prop.listeBienImmobiliers" > {{bien.idBien}}
+    <div class="panel panel-primary" *ngFor="let prop of listeProprietaire2">
+
+        <!--////////////////// HEADER DU PANNEAU ////////////////////-->
+        <div class="panel-heading">
+            <h3 class="panel-title">{{prop.nom}}</h3>
+        </div>
+        <!--end div header-->
+
+        <div class="panel-body">
+            <div class="col-xs-10">
+                <div class="row vertical-align">
+
+                    <div class="col-xs-8">
+                        <!--detail-->
+                        <div class="row">
+
+                            <div class=" titre col-xs-6">
+                                Téléphone personnel :
+                            </div>
+                            <div class="col-xs-6">
+                                {{prop.telephonePerso}}
+                            </div>
+                            <div class="titre col-xs-6">
+                                Téléphone professionel :
+                            </div>
+                            <div class="col-xs-6">
+                                {{prop.telephonePro}}
+                            </div>
+                            <div class="titre col-xs-6">
+                                Adresse :
+                            </div>
+                            <div class="col-xs-6">
+                                {{prop.adresse.rue}} {{prop.adresse.codePostal}} {{prop.adresse.localite}}
+                            </div>
+                            <!-- Biens Immobilier-->
+                            <div class="titre col-xs-6">
+                                Biens immobiliers :
+                            </div>
+                            <div class="col-xs-6">
+                                <span *ngFor="let bien of prop.listeBienImmobiliers"> {{bien.idBien}}
                         </span>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-
         </div>
-    </div>
 
 
-    <!--end body-->
-    <!--////////////////// FOOTER DU PANNEAU ////////////////////-->
-    <div class="panel-footer">
+        <!--end body-->
+        <!--////////////////// FOOTER DU PANNEAU ////////////////////-->
+        <div class="panel-footer">
 
-        <a href="compte/affichage-proprietaire/{{prop.id}}" role="button" class="btn btn-primary">Afficher</a> |
-        <!--+++++++ bouton pour éditer +++++++-->
-        <button class="btn btn-warning" (click)="editProprietaire(prop.id)">
+            <a href="compte/affichage-proprietaire/{{prop.id}}" role="button" class="btn btn-primary">Afficher</a> |
+            <!--+++++++ bouton pour éditer +++++++-->
+            <button class="btn btn-warning" (click)="editProprietaire(prop.id)">
             Modifier
         </button> |
-        <!--+++++++ bouton pour supprimer +++++++-->
-        <button class="btn btn-danger" (click)="supprimer(prop.id)">
+            <!--+++++++ bouton pour supprimer +++++++-->
+            <button class="btn btn-danger" (click)="supprimer(prop.id)">
             Supprimer
         </button>
 
+        </div>
+        <!--end div footer-->
+
+
     </div>
-    <!--end div footer-->
-
-
-</div>
 
 </div>
 <!--======================================================================-->

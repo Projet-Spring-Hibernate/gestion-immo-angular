@@ -1,0 +1,14 @@
+td {
+    padding: 5px;
+}
+
+.loginArea {
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    width: 370px;
+    margin: 0 auto;
+}

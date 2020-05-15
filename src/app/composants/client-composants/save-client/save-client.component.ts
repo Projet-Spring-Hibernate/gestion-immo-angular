@@ -22,7 +22,10 @@ export class SaveClientComponent implements OnInit {
     rue:null,
     codePostal:null,
     localite:null 
-}
+  },
+listeContrats:null,
+listeVisites:null,
+listeClasseStandard:null
 }
 
 
@@ -66,7 +69,10 @@ async saveOrUpdateClient(){
 
    //On ajoute le client à la bdd sans liaisons
    const result2 = await this.saveClient(this.client).toPromise()
+
+   
   }
+  this.router.navigate(['compte/liste-client']);
 }
 
 

@@ -1,41 +1,53 @@
 <app-navbar-conseiller></app-navbar-conseiller>
 <br>
-<br>
+
 <div class="container">
-        <br><br>
-        <div style="width: 100%; text-align: center;">
-           
-            <button class="btn btn-warning" (click)="modifier(clt.id)">
+    <div style="width: 100%; text-align: center;">
+        <h1>Fiche du client {{clt.nom}}</h1>
+        <br>
+        <button class="btn btn-warning" (click)="modifier(clt.id)">
             Modifier
-        </button>
-           
-            <button class="btn btn-danger" (click)="supprimer(clt.id)">
+        </button> |
+        <button class="btn btn-danger" (click)="supprimer(clt.id)">
             Supprimer
         </button>
-        </div>
-        <br><br>
-        <ul class="list-group">
-
-            <li class="list-group-item">
-                <div class="titre">Adresse</div>
-                <div class="info">{{clt.adresse.rue}} {{clt.adresse.codePostal}} {{clt.adresse.localite}}</div>
-            </li>
-            <li class="list-group-item">
-                <div class="titre">Nom</div>
-                <div class="info">{{clt.nom}}</div>
-            </li>
-            <li class="list-group-item">
-                <div class="titre">Telephone Personnel</div>
-                <div class="info">{{clt.telephonePerso}}</div>
-            </li>
-            <li class="list-group-item">
-                <div class="titre">Telephone Professionnel</div>
-                <div class="info">{{clt.telephonePro}}</div>
-            </li>
-            
-        </ul>
-
     </div>
+    <br><br>
+    <ul class="list-group">
+
+        <li class="list-group-item">
+            <div class="titre">Nom</div>
+            <div class="info">{{clt.nom}}</div>
+        </li>
+        <li class="list-group-item">
+            <div class="titre">Telephone Personnel</div>
+            <div class="info">{{clt.telephonePerso}}</div>
+        </li>
+        <li class="list-group-item">
+            <div class="titre">Telephone Professionnel</div>
+            <div class="info">{{clt.telephonePro}}</div>
+        </li>
+        <li class="list-group-item">
+            <div class="titre">Adresse</div>
+            <div class="info">{{clt.adresse.rue}} {{clt.adresse.codePostal}} {{clt.adresse.localite}}</div>
+        </li>
+        <li class="list-group-item">
+            <div class="titre">Interressé par les classes standards :</div>
+            <div class="info"><span *ngFor="let classe of clt.listeClasseStandard">{{classe.codeClasse}} <br/></span></div>
+        </li>
+        <li class="list-group-item">
+            <div class="titre">Contrats : </div>
+            <div class="info"><span *ngFor="let contrat of clt.listeContrats">{{contrat.numeroRef}} <br/></span></div>
+        </li>
+        <li class="list-group-item">
+            <div class="titre">Visites : </div>
+            <div class="info"><span *ngFor="let visite of clt.listeVisites">Visite n°{{visite.idVisite}} <br/></span></div>
+        </li>
+
+
+    </ul>
+
+</div>
 
 <!--======================================================================-->
 <!--=============================== FOOTER================================ -->

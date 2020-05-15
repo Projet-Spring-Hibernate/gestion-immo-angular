@@ -1,85 +1,79 @@
 <app-navbar-conseiller></app-navbar-conseiller>
-<br/>
-<br/>
-<h2 style="text-align: center;">Liste des Conseillers</h2>
-<br/>
-<a href="compte/save-conseillers/0" class="btn btn-primary">    Ajouter </a>
-<br/>
-<br/>
-<div class="panel panel-primary" *ngFor="let cons of conseiller2">
-    <div class="panel-heading">
-        <h3 class="panel-title">{{cons.nom}}</h3>
-      </div>
-   
-    <div class="panel-body">
-        <div class="col-xs-10">
-            <div class="row vertical-align">
-                
-                <div class="col-xs-8">
-                    <!--detail-->
+<br>
+<div class="container">
+    <div style="width: 100%; text-align: center;">
+        <h1>Liste des conseillers </h1>
+        <br>
+        <a href="compte/save-conseillers/0" class="btn btn-primary">Ajouter un conseiller</a>
+    </div>
+    <br/>
+    <br/>
+    <div class="panel panel-primary" *ngFor="let cons of listeconseiller2">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{cons.nom}}</h3>
+        </div>
+
+        <div class="panel-body">
+            <div class="col-xs-10">
+                <div class="row vertical-align">
+
                     <div class="row">
-                     
-                        <div class="col-xs-6">
+
+                        <div class="titre col-xs-6">
                             Téléphone personnel :
                         </div>
                         <div class="col-xs-6">
                             {{cons.telephonePerso}}
                         </div>
-                        <div class="col-xs-6">
+                        <div class="titre col-xs-6">
                             Téléphone professionel :
                         </div>
                         <div class="col-xs-6">
                             {{cons.telephonePro}}
                         </div>
-                        <div class="col-xs-6">
+                        <div class="titre col-xs-6">
                             adresse :
                         </div>
                         <div class="col-xs-6">
-                            {{cons.adresse.rue}}
-                            {{cons.adresse.localite}}
-                            {{cons.adresse.codePostal}}
+                            {{cons.adresse.rue}} {{cons.adresse.localite}} {{cons.adresse.codePostal}}
                         </div>
-                      
-                        <div class="col-xs-6">
+
+                        <div class="titre col-xs-6">
                             Contrat :
                         </div>
                         <div class="col-xs-6">
-                          <span  *ngFor ="let cont of cons.contrats" > {{cont.idContrat}}
+                            <span *ngFor="let cont of cons.contrats"> Contrat n°{{cont.idContrat}} pour le bien n°{{cont.bienImmobilier.idBien}} <br/>
                         </span>
                         </div>
 
-                        <div class="col-xs-6">
+                        <div class="titre col-xs-6">
                             Visite :
                         </div>
                         <div class="col-xs-6">
-                          <span *ngFor ="let visite of cons.visites">{{visite.idVisite}}
-                          </span>  
+                            <span *ngFor="let visite of cons.visites">Visite n°{{visite.idVisite}} : bien n°{{visite.bienImmobilier.idBien}} le {{visite.dateDeVisite}} à {{visite.heureDeVisite}} <br/> 
+                          </span>
                         </div>
 
-          
-                    </div>
-                </div>
-            </div>
 
+                    </div>
+
+                </div>
+
+            </div>
         </div>
-    </div>
-    <!--end body-->
-    <div class="panel-footer">
-        <!-- ++++ bouton pour éditer -->
-        <button class="btn btn-primary" (click)="affichage(cons.id)">
+        <!--end body-->
+        <div class="panel-footer">
+            <!-- ++++ bouton pour éditer -->
+            <button class="btn btn-primary" (click)="affichage(cons.id)">
           Afficher
-        </button>
-        |
-        <button class="btn btn-warning" (click)="modifier(cons.id)">
+        </button> |
+            <button class="btn btn-warning" (click)="modifier(cons.id)">
             Modifier
-          </button>
-         |
-          <button class="btn btn-danger" (click)="supprimer(cons.id)">
+          </button> |
+            <button class="btn btn-danger" (click)="supprimer(cons.id)">
             Supprimer
           </button>
-      </div>
-      <!-- end div footer -->
-  
+        </div>
+        <!-- end div footer -->
+    </div>
 </div>
-
-

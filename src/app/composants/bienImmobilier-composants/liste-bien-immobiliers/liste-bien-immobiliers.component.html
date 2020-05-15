@@ -2,42 +2,34 @@
 
 
 <div class="container">
-    <h1>Liste des propriétés</h1>
+    <div style="text-align: center;">
+        <h1>Liste des bien immobiliers</h1>
 
+        <br>
+        <div style="width: 400px; border-radius: 5px; border:1px solid lightgray;margin: 0 auto;">
+            <form #filtreForm="ngForm" (ngSubmit)="getAllBienImmobiliers()">
+                <table>
+                    <tr>
 
-    <div class="row">
+                        <td><input type="checkbox" name="location" [(ngModel)]="filtres.location"> Locations</td>
+                        <td><input type="checkbox" name="commerciale" [(ngModel)]="filtres.commercial"> Locaux commerciaux </td>
+                        <td><input type="checkbox" name="disponible" [(ngModel)]="filtres.disponible"> Disponibles</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="vente" [(ngModel)]="filtres.vente"> Ventes</td>
+                        <td><input type="checkbox" name="habitation" [(ngModel)]="filtres.habitation"> Habitations </td>
+                        <td><input type="checkbox" name="indisponible" [(ngModel)]="filtres.indisponible"> Indisponibles</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: center;"><input type="submit" class="btn btn-default" value="Chercher"></td>
+                    </tr>
 
-
-        <form #filtreForm="ngForm" (ngSubmit)="getAllBienImmobiliers()">
-            <table>
-
-
-                <tr>
-
-                    <td colspan="4">Locations : <input type="checkbox" name="location" [(ngModel)]="filtres.location"></td>
-                    <td colspan="4">Locaux commerciaux : <input type="checkbox" name="commerciale" [(ngModel)]="filtres.commercial"></td>
-                    <td colspan="4">Disponibles : <input type="checkbox" name="disponible" [(ngModel)]="filtres.disponible"></td>
-
-                </tr>
-
-                <tr>
-
-                    <td colspan="4">Ventes : <input type="checkbox" name="vente" [(ngModel)]="filtres.vente"></td>
-                    <td colspan="4">Habitations : <input type="checkbox" name="habitation" [(ngModel)]="filtres.habitation"></td>
-                    <td colspan="4">Indisponibles : <input type="checkbox" name="indisponible" [(ngModel)]="filtres.indisponible"></td>
-                </tr>
-                <br/>
-                <tr>
-                    <td colspan="2" align="center"><input type="submit" value="Chercher"></td>
-                </tr>
-
-            </table>
-        </form>
+                </table>
+            </form>
+        </div>
     </div>
 
-
-
-    <br/><br/>
+    <br/>
     <div class="panel panel-primary" *ngFor="let bien of listeBienImmobiliers">
         <a href="affichageBienVitrine/{{bien.idBien}}">
             <div class="panel-body">

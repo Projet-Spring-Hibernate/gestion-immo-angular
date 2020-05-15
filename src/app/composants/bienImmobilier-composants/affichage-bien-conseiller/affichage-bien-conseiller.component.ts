@@ -41,7 +41,9 @@ export class AffichageBienConseillerComponent implements OnInit {
    classeStandard:null,
    adresse:null,
    etat:null,
-   prix:null};
+   prix:null,
+   contrat:null,
+   listeVisites:null};
 
  bienImmoLoc:BienALouer={idBien:null,
      statut:null,
@@ -59,7 +61,9 @@ export class AffichageBienConseillerComponent implements OnInit {
      loyer:null,
      charges:null,
      typeBail:null,
-     garniture:null};
+     garniture:null,
+     contrat:null,
+     listeVisites:null};
  
  
  //============= CTOR ===========================//
@@ -96,19 +100,26 @@ export class AffichageBienConseillerComponent implements OnInit {
  async getBien(){
    this.type = await this.getTypeBien(this.id).toPromise()
 
+   
+   
+
    if (this.type.typeBien == "achat") {
      console.log("achat")
-     this.bienImmobilierService.findBienAAcheterById(this.id).subscribe(
-       data=> this.bienImmoAchat = data
-     )
+     this.bienImmoAchat = await this.getBienAchatById(this.id).toPromise()
+     this.bienImmoAchat.listeVisites=await this.getVisitesByIdBien(this.id).toPromise()
+     this.bienImmoAchat.contrat=await this.getContratsByIdBien(this.id).toPromise()
+
 
      
    }else{
    if(this.type.typeBien=="location"){
      console.log("location")
-     this.bienImmobilierService.findBienALouerById(this.id).subscribe(
-       data=> this.bienImmoLoc = data
-     )
+
+     this.bienImmoLoc=await this.getBienLocById(this.id).toPromise()
+     this.bienImmoLoc.listeVisites=await this.getVisitesByIdBien(this.id).toPromise()
+     this.bienImmoLoc.contrat=await this.getContratsByIdBien(this.id).toPromise()
+
+     
    }else{
      console.log("pas chargé")
    }
@@ -140,5 +151,23 @@ async supprimer(id:number){
 delete(id:number){
   return this.bienImmobilierService.deleteBien(id)
 }
+
+
+getBienAchatById(id:number){
+  return this.bienImmobilierService.findBienAAcheterById(id)
+}
+
+getBienLocById(id:number){
+  return this.bienImmobilierService.findBienALouerById(id)
+}
+
+getVisitesByIdBien(id:number){
+  return this.bienImmobilierService.getListeVisitesByIdBienFromWs(id)
+}
+
+getContratsByIdBien(id:number){
+  return this.bienImmobilierService.getListeContratsByIdBienFromWs(id)
+}
+
 
 }

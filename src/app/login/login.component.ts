@@ -9,9 +9,10 @@ import { AuthenticationService } from 'src/app/services/authentication-service/a
 })
 export class LoginComponent implements OnInit {
 
-  username = 'javainuse'
-  password = 'password'
+  username = 'conseiller1@gmail.com'
+  password = '0000'
   invalidLogin = false
+  essaisConnexion=false
 
   constructor(private router: Router,
     private loginservice: AuthenticationService) { }
@@ -20,9 +21,14 @@ export class LoginComponent implements OnInit {
   }
 
   checkLogin() {
+    if(this.essaisConnexion==false){
+      this.essaisConnexion=true
+    }
+    console.log(this.essaisConnexion);
+
     (this.loginservice.authenticate(this.username, this.password).subscribe(
       data => {
-        this.router.navigate(['compte/liste-biens'])
+        this.router.navigate(['compte'])
         this.invalidLogin = false
       },
       error => {

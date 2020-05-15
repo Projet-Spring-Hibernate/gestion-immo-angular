@@ -9,6 +9,8 @@ import {TypeBien} from '../../modeles/typeBien-modele/typeBien.modele'
 //Import de l'objet Observable
 import {Observable} from 'rxjs'
 import {} from 'rxjs/add/operator/toPromise';
+import { Visite } from 'src/app/modeles/visite-modele/visite.modele';
+import { Contrat } from 'src/app/modeles/contrat-modele/contrat.modele';
 
 @Injectable({
     //permet de declarer le service comme provider de maniere transverse
@@ -36,7 +38,8 @@ export class BienImmobilierService {
    private URL_WSREST_SAVE_LOC = "http://localhost:8080/spring-rest/bienALouer/save"
    private URL_WSREST_SAVE_ACHAT = "http://localhost:8080/spring-rest/bienAAcheter/save"
    private URL_WSREST_DELETE ="http://localhost:8080/spring-rest/bienImmobilier/delete"
-
+   private URL_WSREST_GETVISITES="http://localhost:8080/spring-rest/visite/get-by-idBien"
+   private URL_WSREST_GETCONTRATS="http://localhost:8080/spring-rest/contrat/get-by-idBien"
    /**
     * Recup de tous les biens immobiliers de la bdd via le ws
     */
@@ -108,4 +111,14 @@ findTypeBienById(idBien : number): Observable<TypeBien>{
   deleteBien(id:number){
     return this.httpClient.delete<void>(`${this.URL_WSREST_DELETE}/${id}`);
   }
+
+
+  getListeVisitesByIdBienFromWs(id:number){
+    return this.httpClient.get<Visite[]>(`${this.URL_WSREST_GETVISITES}/${id}`);
+  }
+
+  getListeContratsByIdBienFromWs(id:number){
+    return this.httpClient.get<Contrat>(`${this.URL_WSREST_GETCONTRATS}/${id}`);
+  }
+
 }//End class

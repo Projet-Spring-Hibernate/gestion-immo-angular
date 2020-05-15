@@ -34,7 +34,9 @@ bienImmoLoc:BienALouer={idBien:null,
   loyer:null,
   charges:null,
   typeBail:null,
-  garniture:null};
+  garniture:null,
+  contrat:null,
+  listeVisites:null};
 
   listeProprietairesBdd=[]
   listeClasseStandard=[]

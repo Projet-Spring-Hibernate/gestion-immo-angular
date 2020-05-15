@@ -1,6 +1,8 @@
 import { Proprietaire } from '../proprietaire-modele/proprietaire.modele';
 import { ClasseStandard } from '../classeStandard-modele/classeStandard.modele';
 import { Adresse } from '../adresse-modele/adresse.modele';
+import { Contrat } from '../contrat-modele/contrat.modele';
+import { Visite } from '../visite-modele/visite.modele';
 export class BienAAcheter{
     idBien:number;
     statut:string;
@@ -16,4 +18,6 @@ export class BienAAcheter{
     adresse:Adresse;
     etat:string;
     prix:number;
+    contrat:Contrat;
+    listeVisites:Visite[]
 }

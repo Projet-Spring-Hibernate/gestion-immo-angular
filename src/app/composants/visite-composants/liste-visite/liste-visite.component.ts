@@ -23,4 +23,26 @@ export class ListeVisiteComponent implements OnInit {
       data=>this.listeVisite=data
     )
   }
+
+  modifier(id :number){
+    this.router.navigate(['compte/save-visite/', id]);
+  }
+
+  async supprimer(id:number){
+    //const prop = await this.getById(id).toPromise()
+    const suppr = await this.delete(id).toPromise()
+    console.log(suppr)
+    this.router.navigate(['/compte/liste-visites']);
+    console.log("visite supprimée")
+  }
+
+  
+
+  delete(id:number){
+    return this.visiteService.deleteVisiteWithWsRest(id)
+  }
+
+  getById(id:number){
+    return this.visiteService.getByIdVisiteFromWsRest(id)
+  }
 }

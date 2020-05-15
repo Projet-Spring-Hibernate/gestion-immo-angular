@@ -7,6 +7,8 @@ import { InfoVenteLocationComponent } from './info-vente-location/info-vente-loc
 import { AboutUsComponent } from './about-us/about-us.component';
 import { InfosContactComponent } from './infos-contact/infos-contact.component';
 
+//========= Accueil conseiller==============//
+import { AccueilConseillerComponent } from './accueil-conseiller/accueil-conseiller.component';
 
 //========= Biens =========================//
 import { ListeBienImmobiliersComponent } from './composants/bienImmobilier-composants/liste-bien-immobiliers/liste-bien-immobiliers.component';
@@ -21,14 +23,17 @@ import {SaveBienAchatComponent} from './composants/bienImmobilier-composants/sav
 //======== Clients ===========//
 import { ListeClientComponent } from './composants/client-composants/liste-client/liste-client.component';
 import { AffichageClientComponent } from './composants/client-composants/affichage-client/affichage-client.component';
-
+import { SaveClientComponent } from './composants/client-composants/save-client/save-client.component';
 
 //======= Visites ============//
 import { ListeVisiteComponent } from './composants/visite-composants/liste-visite/liste-visite.component';
 import {SaveVisiteComponent} from './composants/visite-composants/save-visite/save-visite.component'
+import { AffichageVisiteComponent } from './composants/visite-composants/affichage-visite/affichage-visite.component';
 
 //======= Contrats ============//
 import { ListeContratComponent } from './composants/contrat-composants/liste-contrat/liste-contrat.component';
+import { SaveContratComponent } from './composants/contrat-composants/save-contrat/save-contrat.component';
+import { AffichageContratComponent } from './composants/contrat-composants/affichage-contrat/affichage-contrat.component';
 
 //======= Propriétaires ============//
 import { ListeProprietaireComponent } from './composants/proprietaire-composants/liste-proprietaire/liste-proprietaire.component';
@@ -47,8 +52,9 @@ import { LogoutComponent } from './logout/logout.component';
 
 //=========== AuthGaurd
 import { AuthGaurdService } from './services/authGaurd-service/auth-gaurd-service.service';
-import { SaveContratComponent } from './composants/contrat-composants/save-contrat/save-contrat.component';
-import { SaveClientComponent } from './composants/client-composants/save-client/save-client.component';
+
+
+
 
 const routes: Routes = [  {path:"", redirectTo:"home", pathMatch:'full'}, //route par defaut - redirection
 {path:'home', component: HomeComponent},
@@ -70,9 +76,11 @@ const routes: Routes = [  {path:"", redirectTo:"home", pathMatch:'full'}, //rout
 
 {path:'compte/liste-visites', component: ListeVisiteComponent,canActivate:[AuthGaurdService]},
 {path:'compte/save-visite/:id', component: SaveVisiteComponent,canActivate:[AuthGaurdService]},
+{path:'compte/affichage-visite/:id', component: AffichageVisiteComponent,canActivate:[AuthGaurdService]},
 
 {path:'compte/liste-contrats', component: ListeContratComponent,canActivate:[AuthGaurdService]},
-{path:'compte/save-contrat/:id', component: SaveContratComponent},
+{path:'compte/save-contrat/:id', component: SaveContratComponent,canActivate:[AuthGaurdService]},
+{path:'compte/affichage-contrat/:id', component: AffichageContratComponent,canActivate:[AuthGaurdService]},
 
 {path:'compte/liste-proprietaires', component: ListeProprietaireComponent,canActivate:[AuthGaurdService]},
 {path:'compte/affichage-proprietaire/:id', component: AffichageProprietaireComponent,canActivate:[AuthGaurdService]},
@@ -83,6 +91,7 @@ const routes: Routes = [  {path:"", redirectTo:"home", pathMatch:'full'}, //rout
 {path:'compte/affichageconseiller/:id', component: AffichageConseillerComponent,canActivate:[AuthGaurdService]},
 {path:'compte/save-conseillers/:id', component: SaveConseillerComponent,canActivate:[AuthGaurdService]},
 
+{path:'compte', component: AccueilConseillerComponent,canActivate:[AuthGaurdService]},
 
 {path:'login', component: LoginComponent},
 {path:'logout', component: LogoutComponent,canActivate:[AuthGaurdService]},

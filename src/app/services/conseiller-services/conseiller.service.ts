@@ -52,13 +52,7 @@ export class ConseillerService {
 
 
   deleteConseiller(id:number){
-    return this.httpClient.delete<void>(`${this.URL_WSREST_DELETE}/${id}`).pipe(
-      tap(
-          //next() émet un événement pour les composants qui vont s'abonner à l'observable
-          // pour les informr de la suppression d'un employé
-            () => {this.refreshNeeded.next()}
-      )
-      );
+    return this.httpClient.delete<void>(`${this.URL_WSREST_DELETE}/${id}`);
   }
 
 }

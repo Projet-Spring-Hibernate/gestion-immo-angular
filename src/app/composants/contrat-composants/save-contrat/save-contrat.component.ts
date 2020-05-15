@@ -91,6 +91,7 @@ export class SaveContratComponent implements OnInit {
      //On modifie la contrat
      const result3 = await this.saveContrat(this.contrat).toPromise()
     }
+    this.router.navigate(['/compte/liste-contrats']);
   }
  
   getAllBiensImmos(){

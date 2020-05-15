@@ -60,4 +60,23 @@ getVisite(id:number){
 getContrat(id:number){
   return this.conseillerservice.getAllConseillerbyContratFromWsRest(id);
 }
+
+
+delete(id:number){
+  return this.conseillerservice.deleteConseiller(id);
+}
+async modifier(id:number){
+
+    this.router.navigate(['compte/save-conseillers/'+id]);
+  
+  
+}
+
+async supprimer(id:number){
+
+  const suppr = await this.delete(id).toPromise()
+  console.log(suppr)
+  this.router.navigate(['/compte/liste-conseillers']);
+  console.log("conseiller supprimer")
+}
 }

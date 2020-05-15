@@ -1,66 +1,78 @@
-
-<app-navbar-conseiller></app-navbar-conseiller>
+<app-navbar-conseiller>
+</app-navbar-conseiller>
 <br/>
 <br/>
-<h2 style="text-align: center;">Fiche de {{conseiller.nom}} </h2>
-<br/> <br/>
-<div class="container">  
 
-       <ul class="list-group">
-              
-              <li class="list-group-item">
-              <div class="titre">Id Conseiller : </div> 
-              <div class="info">{{conseiller.id}}</div>
-              </li>
-             
-              <li class="list-group-item">
-              <div class="titre">Email : </div>
-              <div class="info">{{conseiller.email}}</div>
-               </li>
-         
-               <li class="list-group-item">
-               <div class="titre">Téléphone personnel : </div> 
-              <div class="info">{{conseiller.telephonePerso}}</div>
-              </li>
+<div class="container">
+
+    <div style="width: 100%; text-align: center;">
+        <h1>Fiche de {{conseiller.nom}}</h1>
+        <br>
+        <!--+++++++ bouton pour éditer +++++++-->
+        <button class="btn btn-warning" (click)="modifier(conseiller.id)">
+             Modifier
+         </button> |
+        <!--+++++++ bouton pour supprimer +++++++-->
+        <button class="btn btn-danger" (click)="supprimer(conseiller.id)">
+             Supprimer
+         </button>
+    </div>
+
+    <br><br>
+
+    <ul class="list-group">
+
+        <li class="list-group-item">
+            <div class="titre">Id Conseiller : </div>
+            <div class="info">{{conseiller.id}}</div>
+        </li>
+
+        <li class="list-group-item">
+            <div class="titre">Email : </div>
+            <div class="info">{{conseiller.email}}</div>
+        </li>
+
+        <li class="list-group-item">
+            <div class="titre">Téléphone personnel : </div>
+            <div class="info">{{conseiller.telephonePerso}}</div>
+        </li>
 
 
-              <li class="list-group-item">
-               <div class="titre">Téléphone professionel : </div>
-               <div class="info">{{conseiller.telephonePro}}</div>
-              </li>
-       
-       
-       
-              <li class="list-group-item">
-              <div class="titre">Adresse : </div>
-              <div class="info"><span>{{conseiller.adresse.rue}} {{conseiller.adresse.localite}} {{conseiller.adresse.codePostal}} </span></div>
-              </li>
-       
-              <li class="list-group-item">
-              <div class="titre"> Contrat : </div>
-              <div class="info">
-                   <span *ngFor ="let contrat of conseiller.contrats" > 
-                <pre> numéro de rédérence : {{contrat.numeroRef}}    
- Date : {{contrat.date}} </pre>
+        <li class="list-group-item">
+            <div class="titre">Téléphone professionel : </div>
+            <div class="info">{{conseiller.telephonePro}}</div>
+        </li>
+
+
+
+        <li class="list-group-item">
+            <div class="titre">Adresse : </div>
+            <div class="info"><span>{{conseiller.adresse.rue}} {{conseiller.adresse.localite}} {{conseiller.adresse.codePostal}} </span></div>
+        </li>
+
+        <li class="list-group-item">
+            <div class="titre"> Contrat : </div>
+            <div class="info">
+                <span *ngFor="let contrat of conseiller.contrats"> 
+               Contrat n°{{contrat.idContrat}} pour le bien n°{{contrat.bienImmobilier.idBien}}.<br/>
+               
                  </span>
-              </div>
-               </li>
+            </div>
+        </li>
 
 
-              <li class="list-group-item">
-              <div class="titre"> Visite : </div>
-              <div class="info">
-                   <span *ngFor ="let visite of conseiller.visites">{{visite.idVisite}}
-                   </span>  
-              </div>
-              </li>
-       
-      
-</ul>
+        <li class="list-group-item">
+            <div class="titre" style="height: 100%;"> Visite : </div>
+            <div class="info">
+                <span *ngFor="let visite of conseiller.visites">
+                     Visite n°{{visite.idVisite}} : bien n°{{visite.bienImmobilier.idBien}} le {{visite.dateDeVisite}} à {{visite.heureDeVisite}} <br/>
+                   </span>
+            </div>
+        </li>
+
+
+    </ul>
 
 
 
 </div>
-
-
- 

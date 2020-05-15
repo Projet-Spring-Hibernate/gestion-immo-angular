@@ -60,6 +60,9 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { BasicAuthHtppInterceptorService } from './services/basicAuthHtppInterceptor-service/basic-auth-htpp-interceptor-service.service';
 import { SaveConseillerComponent } from './composants/conseiller-composants/save-conseiller/save-conseiller/save-conseiller.component';
+import { AffichageVisiteComponent } from './composants/visite-composants/affichage-visite/affichage-visite.component';
+import { AffichageContratComponent } from './composants/contrat-composants/affichage-contrat/affichage-contrat.component';
+import { AccueilConseillerComponent } from './accueil-conseiller/accueil-conseiller.component';
 
 
 
@@ -100,6 +103,9 @@ SaveBienAchatComponent,
 SaveVisiteComponent,
 LoginComponent,
 LogoutComponent,
+AffichageVisiteComponent,
+AffichageContratComponent,
+AccueilConseillerComponent,
   ],
   imports: [
     BrowserModule,

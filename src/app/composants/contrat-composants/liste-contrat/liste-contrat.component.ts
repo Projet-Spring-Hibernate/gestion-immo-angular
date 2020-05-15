@@ -24,4 +24,25 @@ export class ListeContratComponent implements OnInit {
     )
   }
 
+  modifier(id :number){
+    this.router.navigate(['compte/save-contrat/', id]);
+
+  }//End editProprietaire()
+
+ 
+  async supprimer(id:number){
+    //const prop = await this.getById(id).toPromise()
+    const suppr = await this.delete(id).toPromise()
+    console.log(suppr)
+    this.getAllContrat()
+    this.router.navigate(['/compte/liste-contrats']);
+    console.log("contrat supprimé")
+  }
+
+  
+
+  delete(id:number){
+    return this.contratService.deleteContratWithWsRest(id)
+  }
+
 }

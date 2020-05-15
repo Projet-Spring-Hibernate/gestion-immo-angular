@@ -68,10 +68,11 @@
             </li>
             <li class="list-group-item list-group-item-success" *ngIf="bienImmoAchat.statut=='disponible'" style="text-align: center;">
                 Disponible à partir du {{bienImmoAchat.dateMiseADisposition}}<br/> Liste des visites :
+                <span *ngFor="let visite of bienImmoAchat.listeVisites"> Visite n°{{visite.idVisite}} </span>
             </li>
             <li class="list-group-item list-group-item-danger" *ngIf="bienImmoAchat.statut=='indisponible'" style="text-align: center;">
                 Indisponible
-                <br/> Contrat :
+                <br/> Contrat : {{bienImmoAchat.contrat.numeroRef}}
             </li>
         </ul>
 
@@ -157,7 +158,7 @@
                 <br/> Liste des visites :
             </li>
             <li class="list-group-item list-group-item-danger" *ngIf="bienImmoLoc.statut=='indisponible'" style="text-align: center;">
-                Indisponible <br/> Contrat :
+                Indisponible <br/> Contrat :<br/> Contrat : {{bienImmoLoc.contrat.numeroRef}}
             </li>
         </ul>
 

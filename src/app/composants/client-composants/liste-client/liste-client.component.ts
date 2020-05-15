@@ -13,13 +13,13 @@ export class ListeClientComponent implements OnInit {
    //============= PROPS ===========================//
 
    listeClient=[];
-   listeClasseStandard=[];
+
 
   constructor(private router : Router, private clientService : ClientService) { }
 
   ngOnInit(): void {
     this.getAllClient();
-    this.getAllClasseStandard();
+
   }
 
   //============= METHODES ===========================//
@@ -34,11 +34,21 @@ export class ListeClientComponent implements OnInit {
   )
  }
 
- getAllClasseStandard(){
-  console.log("in getAllClasseStandard")
-  this.clientService.getAllClientFromWsRest().subscribe(
-    data =>  this.listeClasseStandard=data
-  )
- }
 
+
+ modifier(id:number){
+  this.router.navigate(['compte/save-client/'+id]);
+}
+
+async supprimer(id:number){
+  console.log("dans la fonction supprimer")
+  const suppr = await this.delete(id).toPromise()
+
+  this.getAllClient();
+  //this.router.navigate(['/compte/liste-client']);
+  console.log(suppr)
+}
+delete(id:number){
+  return this.clientService.deleteClientWithWsRest(id)
+}
 }

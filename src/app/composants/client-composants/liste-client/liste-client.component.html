@@ -1,43 +1,67 @@
 <app-navbar-conseiller></app-navbar-conseiller>
+<br>
+<div class="container">
+    <div style="width: 100%; text-align: center;">
+        <h1>Liste des clients </h1>
+        <br>
+        <a href="compte/save-client/0" class="btn btn-primary">Ajouter un client</a>
+    </div>
+    <br><br>
+    <div class="panel panel-primary" *ngFor="let prop of listeClient">
 
-<div class="panel panel-primary" *ngFor="let prop of listeClient">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{prop.nom}}</h3>
+        </div>
 
+        <div class="panel-body">
+            <div class="col-xs-10">
+                <div class="row vertical-align">
 
-    <div class="panel-body">
-        <div class="col-xs-10">
-            <div class="row vertical-align">
-                <div class="col-xs-8">
-                    <!--detail-->
-                    <div class="row">
-                        <div class="col-xs-6">
-                            Classe Standard :
-                        </div>
-                        <div class="col-xs-6">
-                            <span *ngFor="let classe of prop.listeClasseStandard">
-                        {{classe.codeClasse}} </span></div>
-                    </div>
-                    <div class="col-xs-6">
-                        Nom :
-                    </div>
-                    <div class="col-xs-6">
-                        {{prop.nom}}
-                    </div>
-                    <div class="col-xs-6">
+                    <div class="titre col-xs-6">
                         Téléphone personnel :
                     </div>
                     <div class="col-xs-6">
                         {{prop.telephonePerso}}
                     </div>
-                    <div class="col-xs-6">
+                    <div class="titre col-xs-6">
                         Téléphone professionel :
                     </div>
                     <div class="col-xs-6">
                         {{prop.telephonePro}}
                     </div>
+                    <div class="titre col-xs-6">
+                        Adresse :
+                    </div>
+                    <div class="col-xs-6">
+                        {{prop.adresse.rue}} {{prop.adresse.codePostal}} {{prop.adresse.localite}}
+                    </div>
+
+                    <div class="titre col-xs-6"> Interessé par les classes :</div>
+                    <div class="col-xs-6">
+                        <span *ngFor="let classe of prop.listeClasseStandard">
+                                         {{classe.codeClasse}} 
+                                </span>
+                    </div>
                 </div>
             </div>
         </div>
-         <!--end body-->
-    
-      <!-- end div footer -->
-</div>
+        <!--////////////////// FOOTER DU PANNEAU ////////////////////-->
+        <div class="panel-footer">
+
+            <a href="compte/affichage-client/{{prop.id}}" role="button" class="btn btn-primary">Afficher</a> |
+            <!--+++++++ bouton pour éditer +++++++-->
+            <button class="btn btn-warning" (click)="modifier(prop.id)">
+                    Modifier
+                </button> |
+            <!--+++++++ bouton pour supprimer +++++++-->
+            <button class="btn btn-danger" (click)="supprimer(prop.id)">
+                    Supprimer
+                </button>
+
+        </div>
+    </div>
+
+    <!--======================================================================-->
+    <!--=============================== FOOTER================================ -->
+    <!--======================================================================-->
+    <app-footer></app-footer>

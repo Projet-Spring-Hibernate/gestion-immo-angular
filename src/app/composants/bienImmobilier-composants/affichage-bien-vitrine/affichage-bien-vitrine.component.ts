@@ -43,7 +43,9 @@ export class AffichageBienVitrineComponent implements OnInit {
     classeStandard:null,
     adresse:null,
     etat:null,
-    prix:null};
+    prix:null,
+    contrat:null,
+    listeVisites:null};
 
   bienImmoLoc:BienALouer={idBien:null,
       statut:null,
@@ -61,7 +63,9 @@ export class AffichageBienVitrineComponent implements OnInit {
       loyer:null,
       charges:null,
       typeBail:null,
-      garniture:null};
+      garniture:null,
+      contrat:null,
+      listeVisites:null};
   
   
   //============= CTOR ===========================//
