@@ -86,8 +86,10 @@ export class ListeProprietaireComponent implements OnInit {
     //const prop = await this.getById(id).toPromise()
     const suppr = await this.delete(id).toPromise()
     console.log(suppr)
+    this.getAllProprietaireWithBien();
     this.router.navigate(['/compte/liste-proprietaires']);
     console.log("proprio supprimé")
+
   }
 
   

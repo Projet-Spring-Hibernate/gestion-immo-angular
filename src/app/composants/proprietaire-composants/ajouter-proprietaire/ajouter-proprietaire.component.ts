@@ -56,6 +56,9 @@ listeBiensBdd=[]
         (data) => {console.log(data);
         }
       );
+
+      
+      this.router.navigate(['compte/liste-proprietaires']);
       
     
   }//end saveOrUpdateProprietaire()
