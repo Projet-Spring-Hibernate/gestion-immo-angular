@@ -46,10 +46,13 @@
                 <div class="titre">Biens immobiliers</div>
                 <br><br>
 
-                <div class="infoImg" *ngFor="let bien of proprietaire.listeBienImmobiliers">
+                
+                <div class="infoImg" *ngFor="let bien of proprietaire.listeBienImmobiliers"> 
+                    <a href="compte/affichage-bien/{{bien.idBien}}">
                     Bien n°{{bien.idBien}} : {{bien.typeBien}}
                     <img class="imageClass" [src]="bien.photo">
-                </div>
+                </a>
+                </div> 
             </li>
 
 

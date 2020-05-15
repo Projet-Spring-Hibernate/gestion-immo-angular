@@ -2,6 +2,57 @@
 <br>
 
 <div class="container">
+    <div style="width: 100%; text-align: center;">
+        <h1>Fiche de la visite n°{{visite.idVisite}}</h1>
+        <br>
+        <!--+++++++ bouton pour éditer +++++++-->
+        <button class="btn btn-warning" (click)="editVisite(visite.idVisite)">
+           Modifier
+       </button> |
+        <!--+++++++ bouton pour supprimer +++++++-->
+        <button class="btn btn-danger" (click)="supprimer(visite.idVisite)">
+           Supprimer
+       </button>
+    </div>
+
+    <br><br>
+
+
+    <ul class="list-group">
+
+        <li class="list-group-item">
+            <div class="titre">Date de la visite</div>
+            <div class="info">{{visite.dateDeVisite}}</div>
+        </li>
+        <li class="list-group-item">
+            <div class="titre">Heure de la visite</div>
+            <div class="info">{{visite.heureDeVisite}}</div>
+        </li>
+
+        <li class="list-group-item">
+            <div class="titre">Bien immobilier</div>
+            <br><br>
+
+            <div class="infoImg" >
+               <a href="compte/affichage-bien/{{visite.bienImmobilier.idBien}}">Bien n°{{visite.bienImmobilier.idBien}} : {{visite.bienImmobilier.typeBien}}
+                <img class="imageClass" [src]="visite.bienImmobilier.photo"></a> 
+            </div>
+        </li>
+
+        <li class="list-group-item">
+            <div class="titre">Client</div>
+            <a href="compte/affichage-client/{{visite.client.id}}"><div class="info">{{visite.client.nom}}</div></a> 
+        </li>
+        <li class="list-group-item">
+            <div class="titre">Conseiller</div>
+            <a href="compte/affichageconseiller/{{visite.conseiller.id}}"> <div class="info">{{visite.conseiller.nom}}</div></a>
+        </li>
+
+
+
+
+
+    </ul>
 
 
 
