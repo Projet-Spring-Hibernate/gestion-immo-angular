@@ -4,6 +4,8 @@ import{ClientService} from 'src/app/services/client-service/client.service'
 import {Client} from 'src/app/modeles/client-modele/client.modele'
 import {AdresseServiceService} from 'src/app/services/adresse-service/adresse-service.service'
 import { Adresse } from 'src/app/modeles/adresse-modele/adresse.modele';
+import { ClasseStandardService } from 'src/app/services/classeStandard-service/classe-standard.service';
+import { ClasseStandard } from 'src/app/modeles/classeStandard-modele/classeStandard.modele';
 
 @Component({
   selector: 'app-save-client',
@@ -25,15 +27,27 @@ export class SaveClientComponent implements OnInit {
   },
 listeContrats:null,
 listeVisites:null,
-listeClasseStandard:null
+listeClasseStandard:[]
 }
 
+classeVide:ClasseStandard={
+  idClasse:null,
+    codeClasse:null,
+    typeDeBien:null,
+    utilisation:null,
+    offre:null,
+    prixMax:null,
+    superficieMin:null
+}
+
+listeClasseStandard=[]
 
   //============= CTOR ===========================//
   constructor(private router : Router, 
     private activatedRoute : ActivatedRoute, 
     private clientService:ClientService,
-    private adresseService:AdresseServiceService) { }
+    private adresseService:AdresseServiceService,
+    private classeService:ClasseStandardService) { }
 
   //============= METHODE INIT ===========================//
   ngOnInit(): void {
@@ -52,10 +66,14 @@ listeClasseStandard:null
    async findClientById(id:number){
     console.log("In findClientById")
 
+    this.listeClasseStandard= await this.getListeClassesStandard().toPromise()
+
+
     if(id!=0){
-      this.clientService.getByIdClientFromWsRest(id).subscribe(
-        (data)=> {this.client=data}
-      )
+
+      this.client= await this.getClientByIdFromWs(id).toPromise()
+      
+      console.log(this.client.listeClasseStandard)
     }
 }
 
@@ -82,5 +100,13 @@ saveClient(client:Client){
 
 saveAdresse(adresse:Adresse){
   return this.adresseService.saveAdresseWithWebService(adresse)
+}
+
+getListeClassesStandard(){
+  return this.classeService.getAllBienImmobiliersFromWsRest()
+}
+
+getClientByIdFromWs(id:number){
+ return this.clientService.getByIdClientFromWsRest(id)
 }
 }

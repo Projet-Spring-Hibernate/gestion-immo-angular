@@ -28,6 +28,7 @@ export class ConseillerService {
 
   private URL_WSREST_GETALLBYID= "http://localhost:8080/spring-rest/conseiller/get-by-id"
   private URL_WSREST_DELETE = "http://localhost:8080/spring-rest/conseiller/delete"
+  private URL_WSREST_GETBYEMAIL="http://localhost:8080/spring-rest/conseiller/get-by-email"
 
   getAllConseillerFromWsRest() : Observable<Conseiller[]>{
     //1. envoi d'une requete en GET via la méthode get() qui retourne un type generique 'Observable<Object>'
@@ -46,6 +47,9 @@ export class ConseillerService {
     return this.httpClient.get<Conseiller>(`${this.URL_WSREST_GETALLBYID}/${idConseiller}`);
   }
 
+  getByEmailFromWs(email : string){
+    return this.httpClient.get<Conseiller>(`${this.URL_WSREST_GETBYEMAIL}/${email}`);
+  }
   saveConseiller(conseiller:Conseiller): Observable<Conseiller>{
     return this.httpClient.post<Conseiller>(this.URL_WSREST_SAVE,conseiller);
   }//end 

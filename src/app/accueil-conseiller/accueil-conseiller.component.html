@@ -3,7 +3,65 @@
 
 <div class="container">
 
-    <h1>Bienvenue dans l'espace conseiller</h1>
+    <h1>Bienvenue {{conseillerLogged.nom}}</h1>
+
+
+    <h3>Informations de votre compte :</h3>
+    <br><br>
+    <ul class="list-group">
+
+        <li class="list-group-item">
+            <div class="titre">Id Conseiller : </div>
+            <div class="info">{{conseillerLogged.id}}</div>
+        </li>
+
+        <li class="list-group-item">
+            <div class="titre">Email : </div>
+            <div class="info">{{conseillerLogged.email}}</div>
+        </li>
+
+        <li class="list-group-item">
+            <div class="titre">Téléphone personnel : </div>
+            <div class="info">{{conseillerLogged.telephonePerso}}</div>
+        </li>
+
+
+        <li class="list-group-item">
+            <div class="titre">Téléphone professionel : </div>
+            <div class="info">{{conseillerLogged.telephonePro}}</div>
+        </li>
+
+
+
+        <li class="list-group-item">
+            <div class="titre">Adresse : </div>
+            <div class="info"><span>{{conseillerLogged.adresse.rue}} {{conseillerLogged.adresse.localite}} {{conseillerLogged.adresse.codePostal}} </span></div>
+        </li>
+
+        <li class="list-group-item">
+            <div class="titre"> Contrat : </div>
+            <div class="info">
+                <span *ngFor="let contrat of conseillerLogged.contrats"> 
+             <a href="compte/affichage-contrat/{{contrat.idContrat}}">Contrat n°{{contrat.idContrat}} pour le bien n°{{contrat.bienImmobilier.idBien}}.<br/>
+             </a>  
+                 </span>
+            </div>
+        </li>
+
+
+        <li class="list-group-item">
+            <div class="titre" style="height: 100%;"> Visite : </div>
+            <div class="info">
+                <span *ngFor="let visite of conseillerLogged.visites">
+                    <a href="compte/affichage-visite/{{visite.idVisite}}">  Visite n°{{visite.idVisite}} : bien n°{{visite.bienImmobilier.idBien}} le {{visite.dateDeVisite}} à {{visite.heureDeVisite}} <br/>
+                   </a>
+                    </span>
+            </div>
+        </li>
+
+
+    </ul>
+
 
 
 </div>

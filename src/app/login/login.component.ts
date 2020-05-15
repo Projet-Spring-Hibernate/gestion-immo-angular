@@ -9,7 +9,7 @@ import { AuthenticationService } from 'src/app/services/authentication-service/a
 })
 export class LoginComponent implements OnInit {
 
-  username = 'conseiller1@gmail.com'
+  username = 'fitz.parmentier@intiimmobilier.com'
   password = '0000'
   invalidLogin = false
   essaisConnexion=false
@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
       data => {
         this.router.navigate(['compte'])
         this.invalidLogin = false
+        sessionStorage.setItem('username', this.username);
       },
       error => {
         this.invalidLogin = true

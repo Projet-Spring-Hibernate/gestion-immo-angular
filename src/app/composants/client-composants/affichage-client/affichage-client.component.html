@@ -37,11 +37,11 @@
         </li>
         <li class="list-group-item">
             <div class="titre">Contrats : </div>
-            <div class="info"><span *ngFor="let contrat of clt.listeContrats">{{contrat.numeroRef}} <br/></span></div>
+            <div class="info"><span *ngFor="let contrat of clt.listeContrats"><a href="compte/affichage-contrat/{{contrat.idContrat}}">{{contrat.numeroRef}} <br/></a></span></div>
         </li>
         <li class="list-group-item">
             <div class="titre">Visites : </div>
-            <div class="info"><span *ngFor="let visite of clt.listeVisites">Visite n°{{visite.idVisite}} <br/></span></div>
+            <div class="info"><span *ngFor="let visite of clt.listeVisites"><a href="compte/affichage-visite/{{visite.idVisite}}">Visite n°{{visite.idVisite}} <br/></a></span></div>
         </li>
 
 
