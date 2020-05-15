@@ -5,6 +5,7 @@ import {ClientService} from 'src/app/services/client-service/client.service'
 import {ConseillerService} from 'src/app/services/conseiller-services/conseiller.service'
 import {BienImmobilierService} from 'src/app/services/bienImmobilier-services/bien-immobilier.service'
 import {Visite} from 'src/app/modeles/visite-modele/visite.modele'
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-save-visite',
@@ -22,10 +23,12 @@ export class SaveVisiteComponent implements OnInit {
     client:null,
     conseiller:null
   }
-
+ 
   listeClientsBdd=[]
   listeConseillersBdd=[]
   listeBienImmobilierBdd=[]
+
+  date:Date
 
   //============= CTOR ===========================//
   constructor(private router : Router, 
@@ -33,7 +36,9 @@ export class SaveVisiteComponent implements OnInit {
     private bienService:BienImmobilierService,
     private conseillerService:ConseillerService,
     private clientService:ClientService,
-    private visiteService:VisiteService) { }
+    private visiteService:VisiteService) {
+   
+     }
 
 
   //============= METHODE INIT ===========================//
@@ -60,15 +65,16 @@ export class SaveVisiteComponent implements OnInit {
    this.listeConseillersBdd = await this.getAllConseillers().toPromise()
 
    if(id!=0){
-     this.visiteService.getByIdVisiteFromWsRest(id).subscribe(
-       (data)=> {this.visite=data}
-     )
+    
+    this.visite=await this.getByIdVisite(id).toPromise();
+    this.date = new Date(this.visite.dateDeVisite);
    }
  }
 
  async saveOrUpdateVisite(){
    console.log(this.visite)
-
+   this.visite.dateDeVisite = formatDate(this.date,'MM/dd/yyyy','en_US') 
+   console.log(  this.visite.dateDeVisite )
    if(this.visite.idVisite != null){
      const result = await this.saveVisite(this.visite).toPromise()
    }else{
@@ -98,6 +104,7 @@ export class SaveVisiteComponent implements OnInit {
     //On modifie la visite
     const result3 = await this.saveVisite(this.visite).toPromise()
    }
+   this.router.navigate(['compte/liste-visites'])
  }
 
  getAllBiensImmos(){
@@ -117,5 +124,9 @@ export class SaveVisiteComponent implements OnInit {
  }
  saveVisite(visite:Visite){
    return this.visiteService.saveVisiteWithWsRest(visite)
+ }
+
+ getByIdVisite(id:number){
+    return this.visiteService.getByIdVisiteFromWsRest(id);
  }
 }

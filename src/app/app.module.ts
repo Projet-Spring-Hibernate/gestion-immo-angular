@@ -64,7 +64,8 @@ import { AffichageVisiteComponent } from './composants/visite-composants/afficha
 import { AffichageContratComponent } from './composants/contrat-composants/affichage-contrat/affichage-contrat.component';
 import { AccueilConseillerComponent } from './accueil-conseiller/accueil-conseiller.component';
 
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -114,7 +115,9 @@ AccueilConseillerComponent,
     CarouselModule.forRoot(),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [{  
     provide:HTTP_INTERCEPTORS, useClass:BasicAuthHtppInterceptorService, multi:true 

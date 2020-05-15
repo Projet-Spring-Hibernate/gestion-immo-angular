@@ -12,8 +12,11 @@
             <div class="panel-body">
 
                 <div class="form-group">
-                    <label for="p-dateDeVisite">Date de visite :</label>
-                    <input type="text" class="form-control" id="p-dateDeVisite" name="dateDeVisite" [(ngModel)]="visite.dateDeVisite">
+                    <label for="p-dateDeVisite">Date de visite : (MM/dd/yyyy)</label>
+                   
+                <input type="text" id="p-dateDeVisite" name="dateDeVisite" 
+                [(ngModel)]="date" class="form-control"   bsDatepicker>
+
                 </div>
                 <div class="form-group">
                     <label for="p-heureDeVisite">Heure de visite :</label>
