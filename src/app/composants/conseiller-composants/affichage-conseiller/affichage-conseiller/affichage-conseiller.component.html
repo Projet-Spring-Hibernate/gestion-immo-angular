@@ -54,8 +54,8 @@
             <div class="titre"> Contrat : </div>
             <div class="info">
                 <span *ngFor="let contrat of conseiller.contrats"> 
-               Contrat n°{{contrat.idContrat}} pour le bien n°{{contrat.bienImmobilier.idBien}}.<br/>
-               
+             <a href="compte/affichage-contrat/{{contrat.idContrat}}">Contrat n°{{contrat.idContrat}} pour le bien n°{{contrat.bienImmobilier.idBien}}.<br/>
+             </a>  
                  </span>
             </div>
         </li>
@@ -65,8 +65,9 @@
             <div class="titre" style="height: 100%;"> Visite : </div>
             <div class="info">
                 <span *ngFor="let visite of conseiller.visites">
-                     Visite n°{{visite.idVisite}} : bien n°{{visite.bienImmobilier.idBien}} le {{visite.dateDeVisite}} à {{visite.heureDeVisite}} <br/>
-                   </span>
+                    <a href="compte/affichage-visite/{{visite.idVisite}}">  Visite n°{{visite.idVisite}} : bien n°{{visite.bienImmobilier.idBien}} le {{visite.dateDeVisite}} à {{visite.heureDeVisite}} <br/>
+                   </a>
+                    </span>
             </div>
         </li>
 

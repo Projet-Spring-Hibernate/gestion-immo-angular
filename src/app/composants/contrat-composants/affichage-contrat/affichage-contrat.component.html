@@ -2,7 +2,47 @@
 <br>
 
 <div class="container">
+    <div style="width: 100%; text-align: center;">
+        <h1>Fiche de contrat n° {{contrat.idContrat}}</h1>
+        <br>
+        <button class="btn btn-warning" (click)="modifier(contrat.idContrat)">
+            Modifier
+        </button> |
+        <button class="btn btn-danger" (click)="supprimer(contrat.idContrat)">
+            Supprimer
+        </button>
+    </div>
+    <br><br>
+    <ul class="list-group">
 
+        <li class="list-group-item">
+            <div class="titre">Prix :</div>
+            <div class="info">{{contrat.prix}}</div>
+        </li>
+        <li class="list-group-item">
+            <div class="titre">Date :</div>
+            <div class="info">{{contrat.date}}</div>
+        </li>
+        <li class="list-group-item">
+            <div class="titre">Numéro de référence :</div>
+            <div class="info">{{contrat.numeroRef}}</div>
+        </li>
+        <li class="list-group-item">
+            <div class="titre">Bien Immobilier :</div>
+            <div class="info"><a href="compte/affichage-bien/{{contrat.bienImmobilier.idBien}}"> Bien immobilier n°{{contrat.bienImmobilier.idBien}}</a></div>
+        </li>
+        <li class="list-group-item">
+            <div class="titre">Client :</div>
+            <div class="info"><a href="compte/affichage-client/{{contrat.client.id}}">{{contrat.client.nom}}</a> </div>
+        </li>
+        <li class="list-group-item">
+            <div class="titre">Conseiller :</div>
+            <div class="info"> <a href="compte/affichageconseiller/{{contrat.conseiller.id}}"> {{contrat.conseiller.nom}}</a></div>
+        </li>
+    
+
+
+    </ul>
 
 
 </div>
