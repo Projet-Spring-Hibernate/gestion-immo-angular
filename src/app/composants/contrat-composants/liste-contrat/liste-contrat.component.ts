@@ -17,11 +17,10 @@ export class ListeContratComponent implements OnInit {
   ngOnInit(): void {
     this.getAllContrat();
   }
-  getAllContrat(){
+  async getAllContrat(){
     console.log("in getAllContrat");
-    this.contratService.getAllContratFromWsRest().subscribe(
-      data=>this.listeContrat=data
-    )
+    this.listeContrat= await this.getAllFromWs().toPromise()
+    console.log(this.listeContrat)
   }
 
   modifier(id :number){
@@ -40,6 +39,9 @@ export class ListeContratComponent implements OnInit {
   }
 
   
+  getAllFromWs(){
+    return this.contratService.getAllContratFromWsRest()
+  }
 
   delete(id:number){
     return this.contratService.deleteContratWithWsRest(id)
